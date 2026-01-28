@@ -1,0 +1,75 @@
+<?php
+
+
+function yadlabanim_preprocess_html(&$variables) {
+  $account = \Drupal::currentUser();
+  $roles = $account->getRoles();
+  foreach ($roles as $role) {
+    $variables['attributes']['class'][] = 'role-' . $role;
+  }
+  $path = \Drupal::service('path.current')->getPath();
+  $path_args = explode('/', $path);
+  if (isset($path_args[1]) && isset($path_args[2]) && ($path_args[1] == 'node') && (is_numeric($path_args[2]))) {
+    $variables['attributes']['class'][] = 'page-node';
+    $variables['attributes']['class'][] = 'page-node-'.$path_args[2];
+  } 
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  $route_name_class = str_replace(".", "-", $route_name);
+  $variables['attributes']['class'][] = "route-" . $route_name_class;
+  if (\Drupal::service('path.matcher')->isFrontPage()) {
+    $variables['attributes']['class'][] = 'front';
+  }
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface){
+    $variables['attributes']['class'][] = 'page-node-' . $node->bundle();
+  }
+
+  // Add taxonomy name to term pages.
+  $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+  if ($term instanceof \Drupal\taxonomy\Entity\Term) {
+    $vocab = $term->bundle();
+    $variables['attributes']['class'][] = 'page-node-' . $vocab;
+  }
+}
+
+/**
+ * Implements yadlabanim_preprocess_page()
+ */
+function yadlabanim_preprocess_page(&$variables) {
+  $path = \Drupal::service('path.current')->getPath();
+  $path_args = explode('/', $path);
+  if (isset($path_args[1]) && ($path_args[1] == 'node') ) {
+    if(!empty($variables['node'])){
+      $node = $variables['node'];
+      $variables['content_type'] = $node->bundle();
+    }
+  }
+  if (\Drupal::routeMatch()->getParameter('taxonomy_term')) {
+    $term = \Drupal::routeMatch()->getParameter('taxonomy_term');
+    if ($term instanceof \Drupal\taxonomy\Entity\Term) {
+      // Pass the term label to the Twig template.
+      $variables['term_label'] = $term->label();
+    }
+  }
+}
+
+function yadlabanim_preprocess_menu__main(&$variables) {
+  foreach ($variables['items'] as &$item) {
+    $menu_link = $item['original_link'];
+    $menu_link_entity = NULL;
+    
+    if ($menu_link) {
+      $metadata = $menu_link->getMetaData();
+      if (isset($metadata['entity_id'])) {
+        $menu_link_entity = \Drupal::entityTypeManager()
+          ->getStorage('menu_link_content')
+          ->load($metadata['entity_id']);
+        
+        if ($menu_link_entity && $menu_link_entity->hasField('field_subtitle')) {
+          $item['subtitle'] = $menu_link_entity->get('field_subtitle')->value;
+        }
+      }
+    }
+  }
+}
+?>

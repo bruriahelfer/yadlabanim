@@ -1,0 +1,24 @@
+base:
+  css:
+    theme:
+      stylesheets/yadlabanim.css: {}
+      js/owl-carousel/assets/owl.carousel.css: {}
+      //fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap: {}
+      //fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&display=swap: {}
+
+  js:
+    js/owl-carousel/owl.carousel.min.js: {}
+    js/owl.js: {}
+    js/basic.js: {}
+    js/yadlabanim.js: {}
+
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+    - core/drupal.ajax
+    - core/jquery.ui.effects.core
+    - core/jquery.ui.effects.slide
+    - core/jquery.ui.effects.size
+    - core/drupalSettings
+    - core/js-cookie

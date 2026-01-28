@@ -1,0 +1,285 @@
+header{
+  position: fixed;
+  width: 185px;
+  padding: 24px 0;
+  background-color: #322C3A;
+  box-sizing: border-box;
+  display: flex;
+  z-index: 101;
+  right: 0;
+  font-family: $karantina;
+  height: 100%;
+  flex-direction: column;
+  border-left: 1px solid #000; 
+  color: #fff;
+  top: 0;
+  @media (max-height: 599px) {
+    overflow: auto;
+  }
+  .gin--vertical-toolbar &{
+    right: 66px;
+  }
+  .bottom{
+    margin-top: auto;
+    font-size: 1.9em;
+    color: #B7A67F;
+    padding: 0 24px;
+    @media (max-height: 770px) {
+      font-size: 1.35em;
+    }
+    .search-button{
+      cursor: pointer;
+      .text{
+        background: url(/themes/yadlabanim/images/search.svg) no-repeat left top 13px;
+        display: inline-block;
+        padding-left: 35px;
+        @media (max-height: 770px) {
+          background-position: left top 8px;
+          background-size: 17px;
+          padding-left: 25px;
+        }
+      }
+    }
+    .search-area{
+      position: fixed;
+      bottom: 0;
+      border-top: 1px solid #AB9C7A;
+      background: #322C3A;
+      width: calc(100% - 185px);
+      padding: 48px 0;
+      left: 0;
+      display: none;
+    }
+    &.search-open{
+      .search-button{
+        .text{
+          background: url(/themes/yadlabanim/images/close-search.svg) no-repeat left top 15px;
+          @media (max-height: 770px) {
+            background-position: left top 10px;
+            background-size: 15px;
+          }
+        }
+      }
+      .search-area{
+        display: block;
+      }
+    }
+  }
+  .top{
+    .logo{
+      text-align: center;
+    }
+  }
+  .center{
+    font-size: 1.9em;
+    .contextual-region{
+      position: initial;
+    }
+    li{
+      list-style: none;
+    }
+    ul.menu-level-0{
+      list-style: none;
+      margin: 30px 0 0;
+      padding: 0;
+      > li{
+        padding: 0 24px 0 18px;
+        margin-bottom: 13px;
+        @media (max-height: 770px) {
+          margin-bottom: 8px;
+        }
+        > span{
+          cursor: pointer;
+        }
+        a{
+          color: #fff;
+        }
+        .field--name-field-subtitle{
+          font-size: 0.85em;
+          font-weight: 300;
+        }
+        &.nizkor{
+          margin-bottom: 40px;
+          padding: 10px 18px;
+          background: url(/themes/yadlabanim/images/nizkor.gif) no-repeat left 25px top #A99B77;
+          background-size: 80px;
+          @media (max-height: 770px) {
+            margin-bottom: 20px;
+          }
+        }
+        &:not(.nizkor){
+          @media (max-height: 770px) {
+            font-size: 0.7em;
+          }
+        }
+        ul{
+          position: absolute;
+          right: 185px;
+          height: 100%;
+          background-color: #322C3A;
+          top: 0;
+          padding: 0;
+          transition: all 0.5s;
+          width: 0;
+          overflow: hidden;
+          .wrapper{
+            padding: 301px 25px 0 50px;
+            width: 278px;
+            box-sizing: border-box;
+            .close-menu{
+              position: absolute;
+              top: 28px;
+              left: 20px;
+              cursor: pointer;
+              width: 50px;
+              height: 50px;
+            }
+            .menu-parent-title{
+              border-bottom: 1px solid #B9A981;
+              padding-bottom: 8px;
+              margin-bottom: 40px;
+            }
+            .menu-item{
+              font-family: $rubik;
+              font-size: 0.5em;
+              font-weight: 300;
+              margin-bottom: 25px;
+              &:last-child{
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+        &.to-be-removed{
+          ul{
+            opacity: 0;
+          }
+        }
+        &.open-sub-menu{
+          ul{
+            width: 278px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*********  responsive menu  *********/
+
+#menu-toggle {
+    width:28px;
+    height:17px;
+    cursor:pointer;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    position: relative;
+    #hamburger {
+      position: absolute;
+      direction: rtl;
+      right: 0;
+      span {
+        border-radius: 10px;
+        height:3px;
+        margin:0px 0 5px;
+        display: block;
+        background-color: $bggold;
+        transition:.25s ease-in-out;
+        -webkit-transition: .25s ease-in-out;
+        box-sizing:border-box;
+        &:nth-child(1){
+          width:28px;          
+          transition-delay:.75s;
+          -webkit-transition-delay:.75s;
+        }
+        &:nth-child(2){
+          width:20px;
+          transition-delay:.625s;
+          -webkit-transition-delay:.625s;
+        }
+        &:nth-child(3){
+          width:28px;
+          transition-delay:.5s;
+          -webkit-transition-delay:.5s;
+        }
+      }
+    }
+    #cross {
+      height:100%;
+      width:100%;
+      transform:rotate(45deg);
+      -ms-transform: rotate(45deg); 
+      -webkit-transform: rotate(45deg); 
+      right: 5px;
+      position: relative;
+      top: -4px;
+      span{
+        border-radius: 10px;
+        display: block;
+        background-color: $bggold;
+        transition:.25s ease-in-out;
+        -webkit-transition: .25s ease-in-out;;
+        box-sizing:border-box;
+        &:nth-child(1){
+          height:0;
+          width:3px;
+          position:absolute;
+          left:19px;
+          top: -7px;
+          transition-delay:0s;
+          -webkit-transition-delay:0s;
+        }
+        &:nth-child(2){
+          width:0%;
+          height:3px;
+          position:absolute;
+          left:8px;
+          top: 4px;
+          transition-delay:.25s;
+          -webkit-transition-delay:0.25s;
+        }
+      }
+    }
+  }
+  
+.open-menu{
+  overflow: hidden;
+  header .menu-wrapper .region-menu-wrapper{
+    right: 0;
+  }
+  #menu-toggle {
+    #hamburger {
+      span {
+        width:0%;
+        &:nth-child(1){
+          transition-delay:.25s;
+          -webkit-transition-delay:0.25s;
+        }
+        &:nth-child(2){
+          transition-delay:.125s;
+          -webkit-transition-delay:0.125s;
+        }
+        &:nth-child(3){
+          transition-delay:0s;
+          -webkit-transition-delay:0s;
+        }
+      }
+    }
+    #cross {
+      span {
+        &:nth-child(1){
+          height:24px;
+          transition-delay:.625s;
+          -webkit-transition-delay:0.265s;
+        }
+      }
+      span {
+        &:nth-child(2){
+          width:24px;
+          transition-delay:.375s;
+          -webkit-transition-delay:0.375s;
+        }
+      }    
+    }
+  }
+}

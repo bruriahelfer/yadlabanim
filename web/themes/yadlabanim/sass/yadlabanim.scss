@@ -1,0 +1,296 @@
+@import "base/colors.scss";
+@import "base/quary.scss";
+@import "base/mixin.scss";
+@import "region/footer.scss";
+@import "region/header.scss";
+@import "content/node.scss";
+@import "paragraphs/views.scss";
+@import "paragraphs/textimage.scss";
+@import "paragraphs/paragraphs.scss";
+
+
+a, a:link, a:visited{
+  text-decoration: none;
+  color: $default;
+}
+
+body{
+    color: $default;
+    line-height: 1.2;
+    font-family: $rubik;
+    font-size: 20px;
+    margin: 0;
+    background-color: $beige-bg;
+    .dialog-off-canvas-main-canvas{
+      padding-right: 185px;
+      .layout-container{
+        font-size: 1em;
+      }
+    }
+    input, textarea, select{
+      font-family: $rubik;
+    }
+    &:not(.page-node){
+      main{
+        @include width;
+      }
+    }
+}
+
+#block-yadlabanim-content{
+  position: relative;
+}
+
+
+h1, h2, h3, h4, h5, h6{
+  margin: 0;
+  font-weight: normal;
+}
+
+h1{
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.text-formatted, .field--type-text-with-summary{
+  p{
+    margin-top: 0;
+  }
+  a{
+    text-decoration: underline;
+    color:$textgold;
+  }
+}
+
+.owl-carousel{
+  overflow: hidden;
+}
+
+.owl-stage{
+  display: flex;
+}
+
+.owl-dots{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    @include res(s-m){
+      margin-top: 25px;
+    }
+    .owl-dot{
+       width: 11px;
+       height: 11px;
+       border: 2px solid $bggold;
+       box-sizing: border-box;
+       border-radius: 50%;
+       margin: 0 5px;
+       &.active{
+            background: $bggold;
+       }
+       &:first-child:last-child{
+        display: none;
+       }
+    }
+}
+
+.region-wrapper.region-message{
+  z-index: 100;
+  position: relative;
+}
+
+.field--type-text-long, .field--type-text-with-summary{
+  a{
+    text-decoration: underline;
+    color:$textgold;
+  }
+}
+
+input{
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+img, video{
+  max-width: 100%;
+  height: auto;
+  margin-bottom: -4px;
+}
+
+video{
+  max-width: 100%;
+}
+
+.only-mobile{
+  display: none;
+  @include res(s-m-l){
+    display: block;
+  }
+}
+
+.only-desktop{
+  @include res(s-m-l){
+    display: none!important;
+  }
+}
+
+.toolbar-tray span, .toolbar-tray a {
+    color: #565656;
+    text-decoration: none;
+    display: block;
+}
+
+.width-wrapper{
+  @include width;
+}
+
+.hide{
+  display: none;
+}
+
+#block-yadlabanim-primary-local-tasks{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  background-color:$bggold;
+  z-index: 200;
+  padding: 10px 0;
+  a{
+      color: #fff;
+      font-size: 16px;
+  }
+  > ul{
+      margin: 0;
+      display: flex;
+      list-style: none;
+      padding-right: 77px;
+      justify-content: center;
+      li{
+        margin: 0 10px;
+      }
+      .is-active {
+          a{
+              opacity: 0.9;
+              pointer-events: none;
+          }
+      }
+      a:hover{
+          opacity: 0.9;
+      }
+  }
+}
+
+.toolbar-oriented .toolbar-bar{
+  z-index: 1001;
+}
+
+.ajax-progress{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0 !important;
+  right: 0 !important;
+  padding: 0;
+  background: url(/themes/yadlabanim/images/loader.svg) no-repeat center center rgba(0,0,0,0.3);
+  background-size: 150px;
+  display: -webkit-box;display: flex;
+  -webkit-box-align: center;align-items: center;
+  -webkit-box-pack: center;justify-content: center;
+  z-index: 101;
+}
+
+.region-message .messages{
+  width: 500px;
+  margin: 50px auto 0;
+  position: absolute;
+  z-index: 10;
+  background-color: rgba(256,256,256,0.8);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 0.8em;
+  text-align: center;
+  right: calc(50% - 250px);
+}
+
+// accibility
+
+body{
+  .aioa-widget-wrapper .accessibility-trigger button:hover, 
+  .aioa-widget-wrapper .accessibility-trigger button:focus{
+    background-color: transparent!important;
+    scale: 1!important;
+  }
+  .aioa-widget-wrapper .accessibility-trigger.aioa-default-icon button{
+    background: url(/themes/yadlabanim/images/accessibility-blue.png) no-repeat center center!important;
+    background-size: 39px !important;
+    transition: background 0.5s;
+    left: calc(50% - 653px);
+    right: auto;
+    margin-top: -5px;
+    transition: all 0.5s;
+    @include res(width){
+      left: 236px;
+    }
+    @include res(s-m-l){
+      display: none!important;
+    }
+    img, svg, .aioa-trigger-button-tooltip, .aioa_loader{
+      display: none!important;
+    }
+  }
+  &.white-header:not(.scroll):not(.open-menu), .route-system-404:not(.scroll):not(.open-menu){
+    .accessibility-trigger.aioa-default-icon button{
+      background: url(/themes/yadlabanim/images/accessibility-white.png) no-repeat center center!important;
+      background-size: 39px !important;
+    }
+  }
+  .accessibility-modal-header, .accessibility-modal-button-group button, .accessibility-modal-button-group a, .accessibility-modal-footer .accessibility-footer-report-link{
+  }
+  .accessibility-modal-footer .accessibility-footer-wrapper{
+    display: none!important;
+  }
+  &.gin--vertical-toolbar{
+    .accessibility-trigger.aioa_top_right button {
+      top: 77px;
+    }
+  }
+}
+
+.order{
+  z-index: 1;
+  position: relative;
+  width: 20px;
+  height:30px;
+  margin: 0 auto;
+  img{
+    width: 20px;
+  }
+  &.dublicate{
+    width: 40px;
+    display: flex;
+  }
+}
+
+.order-text{
+  text-align: center;
+  font-size: 0.8em;
+  a{
+    color: #ff7900;
+  }
+}
+
+[data-contextual-id^=media]{
+  display: none;
+}
+
+form{
+  div[data-drupal-messages]{
+    display: none;
+  }
+  .form-item--error-message{
+    font-size: 0.7em;
+    color: red;
+  }
+}

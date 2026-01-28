@@ -1,0 +1,87 @@
+footer{
+    .top-footer{
+        background-color: #fff;
+        padding: 80px 0 40px;
+        .width-wrapper{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .labels{
+                h2{
+                    font-family: $karantina;
+                    font-weight: 700;
+                    font-size: 2.7em;
+                }
+                h3{
+                    font-size: 1em;
+                    font-weight: 300;
+                }
+            }
+            form{
+                display: flex;
+                justify-content: space-between;
+                max-width: 915px;
+                > div{
+                    width: calc(33.333% - 95px);
+                    label{
+                        display: block;
+                    }
+                    input{
+                        border-radius: 16px;
+                        height: 40px;
+                        border: 2px solid $darkgold;
+                        margin-top: 4px;
+                        padding: 0 15px;
+                        outline: none;
+                        width: 100%;
+                        font-size: 0.9em;
+                        font-weight: 300;
+                    }
+                }
+                > input{
+                    width: 188px;
+                    padding: 0;
+                    height: 40px;
+                    border: none;
+                    border-radius: 100px;
+                    background: $darkgold;
+                    color: #fff;
+                    font-size: 0.9em;
+                    cursor: pointer;
+                    margin-top: 28px;
+                }
+            }
+        }
+    }
+    .bottom-footer{
+        font-weight: 300;
+        padding: 20px 0;
+        .wrapper{
+            max-width: 915px;
+            margin-right: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            #block-yadlabanim-footer-menu{
+                > ul{
+                    display: flex;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    li{
+                        margin-left: 30px;
+                        &:last-child{
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+            .credit{
+                direction: ltr;
+                a{
+                    margin-left: 3px;
+                }
+            }
+        }
+    }
+}

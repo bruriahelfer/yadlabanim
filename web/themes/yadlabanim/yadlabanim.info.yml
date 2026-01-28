@@ -1,0 +1,26 @@
+name: Yad Labanim Theme
+type: theme
+description: Yad Labanim theme
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10 || ^11
+# Defines the base theme
+base theme: stark
+# Defines libraries group in which we can add css/js.
+libraries:
+  - yadlabanim/base
+# Regions
+regions:
+  message: Message
+  menu: Menu
+  floatmenu: Float Menu
+  search: Search
+  header: Header
+  sticky_ruler: Sticky Ruler
+  title: Title
+  content_top: Content Top
+  content: Content
+  content_bottom: Content Bottom
+  sidebar_first: First sidebar
+  sidebar_second: Second sidebar
+  footer_top: Top Footer
+  footer: Footer

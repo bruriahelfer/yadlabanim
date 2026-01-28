@@ -1,0 +1,17 @@
+{% if content.field_banner|render %}
+    <div class="banner">
+        {{ content.field_banner}}
+        <div class="on-image flex"><div class="width-wrapper">
+            <h1 class="page-title">{{ label }}</h1>
+            <h2 class="subtitle">{{ content.field_sub_title }}</h2>
+        </div></div>
+    </div>
+{% else %}
+    <h1 class="page-title">{{ label }}</h1>
+    <h2 class="subtitle">{{ content.field_sub_title }}</h2>
+{% endif %}
+<article{{ attributes }}>
+  <div{{ content_attributes }}>
+    {{ content|without('field_sub_title', 'field_banner') }}
+  </div>
+</article>
