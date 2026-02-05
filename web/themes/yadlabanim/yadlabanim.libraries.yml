@@ -2,13 +2,14 @@ base:
   css:
     theme:
       stylesheets/yadlabanim.css: {}
-      js/owl-carousel/assets/owl.carousel.css: {}
-      //fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap: {}
-      //fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&display=swap: {}
+      js/splide/splide.min.css: {}
+      //fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap: { type: external }
+      //fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&display=swap: { type: external }
 
   js:
-    js/owl-carousel/owl.carousel.min.js: {}
-    js/owl.js: {}
+    js/splide/splide.min.js: {}
+    js/splide/splide-extension-auto-scroll.min.js: {}
+    js/splide.js: {}
     js/basic.js: {}
     js/yadlabanim.js: {}
 

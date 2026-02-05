@@ -7,6 +7,7 @@
 @import "paragraphs/views.scss";
 @import "paragraphs/textimage.scss";
 @import "paragraphs/paragraphs.scss";
+@import "paragraphs/gallery.scss";
 
 
 a, a:link, a:visited{
@@ -23,6 +24,9 @@ body{
     background-color: $beige-bg;
     .dialog-off-canvas-main-canvas{
       padding-right: 185px;
+      @include res(s-m-l){
+        padding-right: 0;
+      }
       .layout-container{
         font-size: 1em;
       }
@@ -33,6 +37,28 @@ body{
     &:not(.page-node){
       main{
         @include width;
+        margin: 100px 0;
+        #user-login-form{
+          max-width: 300px;
+          label{
+            width: 150px;
+            display: inline-block;
+          }
+          input{
+            width: calc(100% - 160px)
+          }
+          input.form-submit{
+            width: auto;
+            padding: 10px 40px;
+            border: none;
+            border-radius: 100px;
+            background: rgba(169,155,119,0.8);
+            color: #fff;
+            font-size: 0.9em;
+            cursor: pointer;
+            margin-top: 20px;
+          }
+        }
       }
     }
 }
@@ -122,7 +148,7 @@ video{
 }
 
 .only-mobile{
-  display: none;
+  display: none!important;
   @include res(s-m-l){
     display: block;
   }

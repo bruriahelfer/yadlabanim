@@ -7,7 +7,7 @@
     .field--name-field-banner{
         .field--name-field-media-video-file{
             video{
-                max-height: 100vh;
+                height: 100vh;
                 width: 100%;
                 object-fit: cover;
             }
@@ -68,7 +68,16 @@ body.front{
         .paragraph {
             position: sticky;
             top: 0;
+            background-color: #fff;
             @media (max-height: 670px){
+                position: relative;
+                top: auto;
+            }
+            @include res(s-m-l){
+                position: relative;
+                top: auto;
+            }
+            @media (min-width: 1025px) and (max-width: 1200px) and (max-height: 760px){
                 position: relative;
                 top: auto;
             }
@@ -93,6 +102,14 @@ body.front{
 .field--name-field-paragraphs{
     .paragraph {
         position: relative;
+        &.has-bg-color{
+            padding-top: 70px;
+            padding-bottom: 90px;
+            @include res(s-m-l){
+                padding-top: 40px;
+                padding-bottom: 50px;
+            }
+        }
     }
 }
 
@@ -116,6 +133,9 @@ body.front{
     .field--name-field-teaser{
         font-weight: 300;
         margin-bottom: 15px;
+        p{
+            margin: 0;
+        }
     }
     .read-more{
         font-weight: 500px;
@@ -127,31 +147,42 @@ body.front{
     }
 }
 
-.owl-controls{
-    .owl-nav{
-        position: absolute;
-        top: calc(50% - 27px);
-        height: 0;
-        z-index: 10;
-        .owl-next, .owl-prev{
-            position: absolute;
-            left: 18px;
-            background: url(/themes/yadlabanim/images/button-next.svg) no-repeat center center;
-            width: 54px;
-            height: 54px;
-            cursor: pointer;
-            text-indent: -9999px;
-            &.disabled{
-                opacity: 0.5;
-                cursor: default;
-                pointer-events: none;
-            }
+.splide__arrows.splide__arrows--rtl{
+    .splide__arrow--next, .splide__arrow--prev{
+        width: 54px;
+        height: 54px;
+        transition: all .5s;
+        opacity: 1;
+        @include res(s-m-l){
+            width: 40px;
+            height: 40px;
         }
-        .owl-next{
-            left: 18px;
+        svg{
+            display: none;
         }
-        .owl-prev{
-            right: 18px;
+        &:disabled{
+            cursor: default;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        @include res(s-m){
+            display: none;
+        }
+    }
+    .splide__arrow--next{
+        background: url(/themes/yadlabanim/images/button-next.svg) no-repeat center center;
+        left: 15px;
+        background-size: 100%;
+        @include res(s-m){
+            left: 5px;
+        }
+    }
+    .splide__arrow--prev{
+        background: url(/themes/yadlabanim/images/button-prev.svg) no-repeat center center;
+        right: 15px;
+        background-size: 100%;
+        @include res(s-m){
+            right: 5px;
         }
     }
 }

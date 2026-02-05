@@ -30,6 +30,7 @@
         "drupal/gin_toolbar": "2.1",
         "drupal/gtm": "^1.10",
         "drupal/image_widget_crop": "3.0",
+        "drupal/media_library_edit": "3.0.4",
         "drupal/menu_item_extras": "3.1",
         "drupal/metatag": "^2.1",
         "drupal/paragraphs": "^1.17",

@@ -47,7 +47,43 @@
           }
         });
 
-        // parallax
+        // gallery
+        function updateImageTitlesWidth() {
+          $('.field--name-field-media-image img[data-title="true"]').each(function() {
+            var $img = $(this);
+            var $title = $img.siblings('.image-title');
+            if ($title.length) {
+              $title.width($img.width());
+            }
+          });
+        }
+
+        // Initial set
+        updateImageTitlesWidth();
+
+        // Update on window resize
+        $(window).on('resize', function() {
+          updateImageTitlesWidth();
+        });
+
+        // fallen menu
+
+        $("header .open-close-arrow").on('click', function (e) { 
+          if ($("header").hasClass('close-side-menu')){
+            $("header").removeClass('close-side-menu').addClass('open-side-menu');
+            $(".open-close-arrow .open-icon").addClass('hide');
+            $(".open-close-arrow .close-icon").removeClass('hide');
+            setTimeout(function() {
+              $("header").addClass('side-menu-activated');
+            }, 500);            
+          } else {
+            $("header").removeClass('open-side-menu').addClass('close-side-menu').removeClass('side-menu-activated');
+            $(".open-close-arrow .close-icon").addClass('hide');
+            $(".open-close-arrow .open-icon").removeClass('hide');
+            $("body").removeClass('sub-menu-open');
+            $(".open-sub-menu").removeClass('open-sub-menu');
+          }
+        });
 
 
 

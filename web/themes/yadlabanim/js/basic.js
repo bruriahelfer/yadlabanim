@@ -9,7 +9,7 @@
       /**** hamburger  **********/
 
       $("body").addClass("close-menu");
-      $("#menu-toggle #hamburger").unbind('click').bind('click', function (e) {
+      $("#menu-toggle").unbind('click').bind('click', function (e) {
         if ($("body").hasClass("open-menu")){
           $("body").removeClass("open-menu");
           $("body").addClass("close-menu");

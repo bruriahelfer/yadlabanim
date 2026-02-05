@@ -1,24 +1,19 @@
 .paragraph--type--view{
-    padding-top: 70px;
-    padding-bottom: 90px;
     .titles{
         @include width;
     }
     .view-events.view-display-id-block_1{
-        //margin-right: calc(50% - 775px);
         margin-top: 70px;
-        @media (max-width: 1835px){
-            margin-right: 50px;
-        }
-        .owl-stage-outer .owl-stage{
-            padding-right: calc(50% - 775px)!important;
-        }
-        .owl-controls{
-            .owl-prev{
-                display: none!important;
+        .splide__arrow--prev{
+            right: -35px;
+            @include res(s-m){
+                right: -45px;
+            }
+            &:disabled{
+                opacity: 0;
             }
         }
-        .view-content{
+        .view-content-events{
             display: flex;
             position: relative;
             &:before{
@@ -33,24 +28,29 @@
             &:after{
                 content:"";
                 position: absolute;                 
-                width: 200px;
+                width: 100px;
                 height: 100%;
-                background: linear-gradient(-97deg, rgba(245, 244, 243, 0.00) 5.66%, #F5F4F3 94.85%);
+                background: linear-gradient(to right, white, transparent);
                 left: 0;
                 top: 0px;
-            }
-            > .views-row{
-                display: none;
-                margin-left: 120px;
-                width: 30%;
-                &:nth-child(1), &:nth-child(2){
-                    display: block;
+                @include res(s-m-l){
+                    width: 50px;
                 }
             }
-            .views-row{
+            .splide__slide{
+                @media (max-width:1750px){
+                    font-size: 0.85em;
+                }
+                .field--name-field-thumbnail{
+                    width: 100%;
+                    img{
+                        width: 100%;
+                    }
+                }
                 .views-field-field-event-date{
                     padding-right: 60px;
                     margin-bottom: 30px;
+                    white-space: nowrap;
                     &:before, &:after{
                         content: "";
                         position: absolute;                 
@@ -70,14 +70,46 @@
                         right: 23px;
                         top: 4px;
                     }
+                    @include res(xxl){
+                        padding-top: 2px;
+                    }
+                    @include res(s-m-l){
+                        padding-top: 2px;
+                        padding-right: 50px;
+                        margin-bottom: 20px;
+                    }
+                    @include res(s){
+                        font-size: 0.8em;
+                        padding-top: 4px;
+                    }
                     .field-content{
                         padding: 0 14px 0 50px;
                         background-color: #f5f4f3;
                         display: inline-block;
+                        @include res(s-m-l){
+                            padding: 0 10px 0 20px;
+                        }
                     }
                 }
                 .views-field-rendered-entity{
                     position: relative;
+                    height: calc(100% - 54px);
+                    article{
+                        height: 100%;
+                        > div{
+                            height: 100%;
+                        }
+                    }
+                    a{
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                        align-items: flex-start;
+                        .read-more{
+                            margin-top: auto;
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }

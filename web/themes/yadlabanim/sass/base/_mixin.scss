@@ -11,5 +11,19 @@
   }
 }
 
+@mixin  width-right(){
+  padding-right: calc(50% - 775px);
+  @media (max-width: 1835px) {
+    padding-right: 50px;
+  }
+  @include res(s-m){
+    padding-right: 20px;
+  }
+}
+
+.width-wrapper-right{
+  @include width-right;
+}
+
 $karantina: 'Karantina', sans-serif;
 $rubik: 'Rubik', sans-serif;

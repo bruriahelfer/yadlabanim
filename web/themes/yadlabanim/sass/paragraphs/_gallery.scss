@@ -1,0 +1,30 @@
+.paragraph--type--gallery{
+    .titles{
+        @include width;
+        margin-bottom: 100px;
+        @include res(xl-xxl){
+            margin-bottom: 50px;
+        }   
+        @include res(s-m-l){
+            margin-bottom: 40px;
+        }
+    }
+    .field--name-field-gallery-images{
+        li{
+            position: relative;
+            > div{
+                height: 100%;
+                .image-title{
+                    width: 0;
+                    overflow: hidden;
+                    margin-top: 18px;
+                    font-size: 0.9em;
+                    font-weight: 500;
+                    @include res(s-m){
+                        font-size: 0.8em;
+                    }
+                }
+            }
+        }
+    }
+}

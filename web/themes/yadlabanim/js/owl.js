@@ -4,7 +4,7 @@
 
   Drupal.behaviors.owl = {
     attach: function (context, settings) {
-
+/*
       if ($('.view-events.view-display-id-block_1 .view-content > .views-row').length > 1) {
         $('.view-events.view-display-id-block_1 .view-content').owlCarousel({
           rtl: true,
@@ -18,7 +18,7 @@
           navText: ['', ''],  
         });
       }
-
+*/
      }
   };
 

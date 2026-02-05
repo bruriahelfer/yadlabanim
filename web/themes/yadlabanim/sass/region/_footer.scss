@@ -1,12 +1,37 @@
 footer{
+    margin-top: -1px;
+    z-index: 10;
+    position: relative;
     .top-footer{
-        background-color: #fff;
+        background: url(/themes/yadlabanim/images/fire-bg.svg) no-repeat left 240px bottom #fff;
         padding: 80px 0 40px;
+        @include res(xl-xxl){
+        padding: 40px 0 40px;
+        }
+        @include res(s-m-l){
+            padding: 30px 0 30px;
+            background-position: left 20px top 20px;
+        }
         .width-wrapper{
             display: flex;
             justify-content: space-between;
             align-items: center;
+            @include res(xl-xxl){
+                flex-wrap: wrap;
+            }
+            @include res(s-m-l){
+                flex-wrap: wrap;
+            }
             .labels{
+                padding-left: 30px;
+                @include res(xl-xxl){
+                    width: 100%;
+                    margin-bottom: 30px;
+                }
+                @include res(s-m-l){
+                    width: 100%;
+                    margin-bottom: 30px;
+                }
                 h2{
                     font-family: $karantina;
                     font-weight: 700;
@@ -21,10 +46,20 @@ footer{
                 display: flex;
                 justify-content: space-between;
                 max-width: 915px;
+                @include res(s-m){
+                    flex-wrap: wrap;
+                }
                 > div{
                     width: calc(33.333% - 95px);
+                    @include res(s-m){
+                        width: 100%;
+                        margin-bottom: 10px;
+                    }
                     label{
                         display: block;
+                        @include res(s-m){
+                            font-size: 0.8em;
+                        }
                     }
                     input{
                         border-radius: 16px;
@@ -44,11 +79,14 @@ footer{
                     height: 40px;
                     border: none;
                     border-radius: 100px;
-                    background: $darkgold;
+                    background: rgba(169, 155, 119, 0.8);
                     color: #fff;
                     font-size: 0.9em;
                     cursor: pointer;
                     margin-top: 28px;
+                    @include res(s-m){
+                        width: 100%;
+                    }
                 }
             }
         }
@@ -62,12 +100,30 @@ footer{
             display: flex;
             justify-content: space-between;
             align-items: center;
+            @include res(s-m){
+                display: block;
+                text-align: center;
+                font-size: 0.8em;
+            }
             #block-yadlabanim-footer-menu{
+                @include res(s-m){
+                    margin-bottom: 20px;
+                }
                 > ul{
                     display: flex;
                     list-style: none;
                     margin: 0;
                     padding: 0;
+                    @include res(s-m){
+                        justify-content: center;
+                    }
+                    @include res(s){
+                        display: block;
+                        li{
+                            width: 100%;
+                            margin-bottom: 5px;
+                        }
+                    }
                     li{
                         margin-left: 30px;
                         &:last-child{
@@ -80,6 +136,12 @@ footer{
                 direction: ltr;
                 a{
                     margin-left: 3px;
+                }
+                @include res(s-m){
+                    img{
+                        width: 75px;
+                        margin-bottom: -2px;
+                    }
                 }
             }
         }

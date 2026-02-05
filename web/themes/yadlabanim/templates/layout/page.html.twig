@@ -1,32 +1,49 @@
 <div class="layout-container">
-  <header role="banner">
-    <div id="menu-toggle" class="only-mobile">
-        <div id="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div class="close-sub-menu">
-          <span></span>
-          <span></span>
-        </div>
-    </div>
-    <div class="top">
+  <header role="banner" class="{% if content_type == "fallen" %}close-side-menu{% endif %}">
+    <div class="top-bar only-mobile"> 
+      <div id="menu-toggle">
+          <div id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div id="cross">
+            <span></span>
+            <span></span>
+          </div>
+      </div>
       <div class="logo">
         <a href="/" rel="home" class="site-logo">
-          <img src="/themes/yadlabanim/images/logo-yadlabanim.svg" alt="Logo Yad Labanim">
+          <img src="/themes/yadlabanim/images/logo-yadlabanim-blue.png" alt="Logo Yad Labanim">
         </a>
       </div>
     </div>
-    <div class="center">
-      {{ page.menu }}
-    </div>
-    <div class="bottom">
-      <div class="search-button" role="button" tabindex="0">
-        <div class="text">{{ "Search"|t }}</div>
+    {% if content_type == "fallen" %}
+      <div class="open-close-arrow">
+        <img class="open-icon" src="/themes/yadlabanim/images/left-arrow.svg" alt="Open Menu">
+        <img class="close-icon hide" src="/themes/yadlabanim/images/right-arrow.svg" alt="Close Menu">
       </div>
-      <div class="search-area">
-        {{ page.search }}
+    {% endif %}
+    <div class="menu-side-wrapper">
+      <div class="wrapper">
+        <div class="top">
+          <div class="logo">
+            <a href="/" rel="home" class="site-logo">
+              <img src="/themes/yadlabanim/images/logo-yadlabanim.svg" alt="Logo Yad Labanim">
+            </a>
+          </div>
+        </div>
+        <div class="center">
+          {{ page.menu }}
+        </div>
+        <div class="bottom">
+          <div class="search-button" role="button" tabindex="0">
+            <div class="text">{{ "Search"|t }}</div>
+          </div>
+          <div class="search-area">
+            {{ page.search }}
+          </div>
+        </div>
       </div>
     </div>
   </header>
