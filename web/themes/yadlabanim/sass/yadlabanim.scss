@@ -4,6 +4,7 @@
 @import "region/footer.scss";
 @import "region/header.scss";
 @import "content/node.scss";
+@import "content/fallen.scss";
 @import "paragraphs/views.scss";
 @import "paragraphs/textimage.scss";
 @import "paragraphs/paragraphs.scss";
@@ -227,7 +228,7 @@ video{
   z-index: 101;
 }
 
-.region-message .messages{
+.region-message .messages__wrapper{
   width: 500px;
   margin: 50px auto 0;
   position: absolute;
@@ -318,5 +319,24 @@ form{
   .form-item--error-message{
     font-size: 0.7em;
     color: red;
+  }
+}
+
+.breadcrumbs-wrapper{
+  ol{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    font-size: 0.8em;
+    .arrow{
+      margin: 0 5px;
+    }
+    li:last-child{
+      a{
+        pointer-events: none;
+      }
+    }
   }
 }

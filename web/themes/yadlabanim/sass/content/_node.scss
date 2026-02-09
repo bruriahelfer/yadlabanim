@@ -44,8 +44,9 @@
 
 h1.page-title{
     font-family: $karantina;
-    font-size: 4.5em;
+    font-size: 2.5em;
     .front &{
+        font-size: 4.5em;
         color: $textgold;
         max-width: 350px;
         line-height: 1;
@@ -147,7 +148,7 @@ body.front{
     }
 }
 
-.splide__arrows.splide__arrows--rtl{
+.splide__arrows.splide__arrows--rtl, .splide__arrows.splide__arrows--ltr{
     .splide__arrow--next, .splide__arrow--prev{
         width: 54px;
         height: 54px;
@@ -172,6 +173,7 @@ body.front{
     .splide__arrow--next{
         background: url(/themes/yadlabanim/images/button-next.svg) no-repeat center center;
         left: 15px;
+        right: auto;
         background-size: 100%;
         @include res(s-m){
             left: 5px;
@@ -180,6 +182,7 @@ body.front{
     .splide__arrow--prev{
         background: url(/themes/yadlabanim/images/button-prev.svg) no-repeat center center;
         right: 15px;
+        left: auto;
         background-size: 100%;
         @include res(s-m){
             right: 5px;

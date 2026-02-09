@@ -1,0 +1,202 @@
+body.page-node-fallen .dialog-off-canvas-main-canvas{
+    padding-right: 100px;
+}
+
+.node--type-fallen.node--view-mode-full{
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    .width-wrapper-right {
+        padding-right: calc(100% - 931px);
+        padding-left: 70px;
+        @media (max-width: 1872px) {
+            padding-right: 135px;
+        }
+    }
+    .left{
+        background: url(/themes/yadlabanim/images/fire-bg.svg) no-repeat left 5vh bottom 5vh #dfdcc9;
+        width: 40%;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: auto 70vh;
+    }
+    .right{
+        width: 60%;
+        .top-area{
+            background-color: #fff;
+            padding-top: 16px;
+            padding-bottom: 50px;
+            position: relative;
+            .type{
+                font-weight: 500;
+                padding: 5px 13px;
+                border: 1px solid #B9A981;
+                border-radius: 12px;
+                display: inline-block;
+                margin-top: 90px;
+            }
+            .title-wrapper{
+                display: flex;
+                align-items: flex-end;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                h1{
+                    margin: 0;
+                }
+                span{
+                    font-family: $karantina;
+                    font-size: 1.75em;
+                    margin: 0 10px 4px 0;
+                }
+            }
+            .field--name-field-teaser{
+                font-size: 1.2em;
+            }
+            .flag-facebook{
+                position: absolute;
+                left: 80px;
+                bottom: -24px;
+                display: flex;
+                align-items: center;
+                .facebook-share-button, .flag a{
+                       border-radius: 10px;
+                        border: 2px solid $bglightgold;
+                        background: #B9A981;
+                        display: flex;
+                        align-items: center;
+                        font-weight: 500;
+                        color: #fff;
+                        padding: 0 16px;
+                        height: 48px;
+                        margin-right: 8px;
+                        box-sizing: border-box;
+                }
+                .flag{
+                    position: relative;
+                    a{
+                        &:after{
+                            width: 40px;
+                            height: 40px;
+                            border-radius: 50%;
+                            content: "";
+                            background: url(/themes/yadlabanim/images/candle.png) no-repeat center #E7B153;
+                            margin-right: 9px;
+                        }
+                    }
+                    &.action-unflag{
+                        a{
+                            pointer-events: none;
+                            &:before{
+                                content: "";
+                                position: absolute;
+                                background: url(/themes/yadlabanim/images/nizkor.gif) no-repeat;
+                                width: 18px;
+                                height: 31px;
+                                background-size: 100%;
+                                left: 29px;
+                                top: -5px;
+                            }
+                        }
+                    }
+                }
+                .facebook-share-button{
+                    svg{
+                        margin-right: 9px;
+                    }
+                }
+            }
+        }
+        .tabs{
+            margin-top: 100px;
+            .menu-tabs{
+                position: sticky;
+                top: 30px;
+                ul{
+                    padding: 0;
+                    margin: 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    list-style: none;
+                    li{
+                        a{
+                            border-radius: 10px;
+                            border: 1px solid #473F52;
+                            background: #fff;
+                            box-shadow: 0 11px 13px 2px #E1DCC7;
+                            padding: 2px 20px;
+                            height: 48px;
+                            display: flex;
+                            align-items: center;
+                            margin-left: 20px;
+                            box-sizing: border-box;
+                            &.active{
+                                background: #E1DCC7;
+                            }
+                        }
+                    }
+                }
+            }
+            .content-tabs{
+                .content-tab > .field{
+                    padding-top: 70px;
+                    .field__label{
+                        font-family: $karantina;
+                        font-size: 1.8em;
+                        border-bottom: 1px solid $blue;
+                        padding-bottom: 2px;
+                        margin-bottom: 30px;
+                    }
+                }
+                #body{
+                    .field--name-body{
+                        .field__item{
+                            max-width: 730px;
+                        }
+                        .field__item{
+                            overflow: hidden;
+                            transition: height 0.5s;
+                        }
+                    }
+                    .read-more{
+                        color: $blue;
+                        cursor: pointer;
+                        background-color: #FBF6EB;
+                        padding-top: 10px;
+                    }
+                }
+                #images{
+                    .field--name-field-media-images{
+                        > .field__items{
+                            display: flex;
+                            > .field__item{
+                                &:nth-child(1), &:nth-child(2){
+                                    display: block;
+                                }
+                            }
+                        }
+                    }
+                    .field--name-field-media-video-file{
+                        position: relative;
+                        video{
+                            height: 230px;
+                            width: auto;
+                        }
+                       .field__item:after{
+                            content: "";
+                            position: absolute;
+                            width: 100%;
+                            height: 100%;
+                            background: url(/themes/yadlabanim/images/video-play.svg) no-repeat center;
+                            top: 0;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -4,23 +4,23 @@
 
   Drupal.behaviors.owl = {
     attach: function (context, settings) {
-/*
-      if ($('.view-events.view-display-id-block_1 .view-content > .views-row').length > 1) {
-        $('.view-events.view-display-id-block_1 .view-content').owlCarousel({
-          rtl: true,
-          nav: true,
-          dots: false,
-          loop: false, 
-          items: 2,
-          margin: 120,
-          stagePadding: 330,
-          navRewind: false,
-          navText: ['', ''],  
-        });
-      }
-*/
-     }
-  };
+      /*
+      $(document).ready(function() {
+        if ($('.field--name-field-media-images > .field__items > .field__item').length > 1) {
+          $('.field--name-field-media-images > .field__items').owlCarousel({
+            rtl: true,
+            nav: true,
+            dots: false,
+            autoWidth:true,
+            loop: true, 
+            margin: 17,
+            navText: ['', ''],  
+          });
+        }
 
+
+      });
+    )*/
+    }
+  }
 })(jQuery, Drupal);
-

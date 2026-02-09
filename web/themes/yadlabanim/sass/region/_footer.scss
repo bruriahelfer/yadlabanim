@@ -5,8 +5,9 @@ footer{
     .top-footer{
         background: url(/themes/yadlabanim/images/fire-bg.svg) no-repeat left 240px bottom #fff;
         padding: 80px 0 40px;
+        padding-right: 185px;
         @include res(xl-xxl){
-        padding: 40px 0 40px;
+            padding: 40px 0 40px;
         }
         @include res(s-m-l){
             padding: 30px 0 30px;
@@ -94,6 +95,7 @@ footer{
     .bottom-footer{
         font-weight: 300;
         padding: 20px 0;
+        padding-right: 185px;
         .wrapper{
             max-width: 915px;
             margin-right: auto;

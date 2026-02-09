@@ -7,7 +7,6 @@
       
       // events front 
       once('splide-init-events', '.view-content-events', context).forEach(function(element) {
-        
         var splide = new Splide(element, {
           direction: 'rtl',
           perPage  : 2,
@@ -83,6 +82,30 @@
       
       splide.mount(window.splide.Extensions);
     });
+
+      // fallen gallery 
+      once('splide-init-fallen-gallery', '.fallen-gallery', context).forEach(function(element) {
+        var splide = new Splide(element, {
+          direction: 'rtl',
+          gap: '17px',
+          autoWidth: true,
+          classes: {
+            list: 'fallen-gallery', 
+            slide: 'splide__slide',  
+          },
+        });
+        
+        const counterCurrent = document.querySelector('.splide-counter .current');
+        const counterTotal   = document.querySelector('.splide-counter .total');
+
+        splide.on('mounted move', function () {
+          counterCurrent.textContent = splide.index + 1;
+          counterTotal.textContent   = splide.length;
+        });
+
+        splide.mount();
+      
+      });
 
 
     }

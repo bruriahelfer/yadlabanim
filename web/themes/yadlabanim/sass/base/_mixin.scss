@@ -1,5 +1,5 @@
 @mixin width(){
-  width: 1650px;
+  width: 1685px;
   max-width: 100%;
   margin: 0 auto;
   padding-left: 50px;
@@ -12,8 +12,9 @@
 }
 
 @mixin  width-right(){
-  padding-right: calc(50% - 775px);
-  @media (max-width: 1835px) {
+  padding-right: calc(50% - 792px);
+  box-sizing: border-box;
+  @media (max-width: 1872px) {
     padding-right: 50px;
   }
   @include res(s-m){

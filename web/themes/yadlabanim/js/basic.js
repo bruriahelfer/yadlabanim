@@ -119,10 +119,15 @@ $('select').change(function(){
      });
 
 
-     $("a.toscroll").on('click',function(e) {
+    $("a.toscroll").on('click', function(e) {
       var url = e.target.href;
-      var hash = url.substring(url.indexOf("#")+1);
-      $('html, body').animate({scrollTop: $('#'+hash).offset().top - 60}, 500);
+      var hash = url.substring(url.indexOf("#") + 1);
+      
+      // Stop any ongoing animations before starting new one
+      $('html, body').stop(true, false).animate({
+        scrollTop: $('#' + hash).offset().top - 60
+      }, 500);
+      
       $("body").removeClass("open-menu");
       return false;
     });

@@ -3,12 +3,12 @@
     justify-content: space-between;
     background-color: #fff;
     .right{
-        padding-right: calc(50% - 775px);
+        padding-right: calc(50% - 792px);
         width: 47%;
         box-sizing: border-box;
         padding-top: 90px;
         padding-bottom: 90px;
-        @media (max-width: 1835px){
+        @media (max-width: 1872px){
             padding-right: 50px;
         }
         @include res(s-m-l){

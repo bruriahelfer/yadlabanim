@@ -1,0 +1,13 @@
+.ck-balloon-panel{
+  top: 50%!important;
+  left: 50%!important;
+  position: fixed!important;
+}
+
+.page-node-type-fallen.gin--edit-form .media-library-wrapper #media-library-view{
+  display: none;
+}
+
+.page-node-type-fallen.gin--edit-form .media-library-widget-modal .ui-dialog-buttonpane .button--primary {
+  display: none;
+}
