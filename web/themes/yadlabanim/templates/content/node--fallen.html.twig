@@ -34,20 +34,65 @@
             {% if content.field_media_images|render %}
               <li><a class="toscroll" href="#images">{{ "The photographs in the album"|t }}</a></li>
             {% endif %}
+            <li><a class="toscroll" href="#resting-place">{{ "His resting place"|t }}</a></li>    
           </ul>
         </div>
         <div class="content-tabs">
           {% if content.body|render %}
             <div id="body" class="content-tab">
               {{ content.body }}
-              <div class="hide read-more">{{ "Read more"|t }}<img src="/themes/yadlabanim/images/readmore.svg""></div>
+              <div class="hide read-more">{{ "Read more"|t }}<img src="/themes/yadlabanim/images/readmore.svg"></div>
             </div>
           {% endif %}
           {% if content.field_media_images|render %}
             <div id="images" class="content-tab">
-              {{ content.field_media_images }}
+              <div class="field">
+                <div class="field__label">{{ "The photographs in the album"|t }}</div>
+                <div class="gallery">
+                  <div class="splide fallen-gallery" role="group" aria-label="Image Gallery">
+                    {{ content.field_media_images }}
+                    <div class="splide-counter">
+                      <span class="total">{{ items|length }}</span> / <span class="current">1</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="lightbox"><div class="wrapper">
+                  <div class="close"><img src="/themes/yadlabanim/images/close-popup.png"></div>
+                  <div class="splide fallen-lightbox" role="group" aria-label="Image Gallery">
+                      <div class="splide__track">
+                        <ul class="splide__list">
+                          {% for item in node.field_media_images %}
+                            <li class="splide__slide">
+                              {{ drupal_entity('media', item.entity.id(), 'lightbox', false) }}
+                              <div class="image-title">{% if item.entity.field_media_video_file is not empty %}{{ item.entity.field_media_video_file.0.description }}{% endif %}</div>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="relevant-title"></div>
+                    <div class="splide-counter-lightbox">
+                      <span class="total">{{ items|length }}</span> / <span class="current">1</span>
+                    </div>
+                  </div>
+                </div></div>
+              </div>
             </div>
           {% endif %}
+          <div id="resting-place" class="content-tab">
+            <div class="field">
+              <div class="field__label">{{ "His resting place"|t }}</div>
+              <div class"content">
+                <div class="cemetery-name">{{ content.field_cemetery }}</div>
+                <div class="places">
+                  {{ content.field_area }}
+                  {{ content.field_plot}}
+                  {{ content.field_line }}
+                  {{ content.field_grave }}
+                </div>
+                <div class="TNCBE">{{ "T.N.C.B.E."|t }}</div>
+                <div class="navigate"><a href="https://www.google.com/maps/place/{{ node.field_cemetery.0.entity.field_address.value }}">{{ "Navigate to the cemetery address >"|t }}</a></div>
+              </div>
+            </div>
         </div>
       </div></div>
     </div>

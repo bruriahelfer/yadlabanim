@@ -112,9 +112,11 @@ body.page-node-fallen .dialog-off-canvas-main-canvas{
         }
         .tabs{
             margin-top: 100px;
+            padding-bottom: 100px;
             .menu-tabs{
                 position: sticky;
                 top: 30px;
+                z-index: 200;
                 ul{
                     padding: 0;
                     margin: 0;
@@ -143,7 +145,7 @@ body.page-node-fallen .dialog-off-canvas-main-canvas{
             .content-tabs{
                 .content-tab > .field{
                     padding-top: 70px;
-                    .field__label{
+                    > .field__label{
                         font-family: $karantina;
                         font-size: 1.8em;
                         border-bottom: 1px solid $blue;
@@ -169,30 +171,173 @@ body.page-node-fallen .dialog-off-canvas-main-canvas{
                     }
                 }
                 #images{
-                    .field--name-field-media-images{
-                        > .field__items{
-                            display: flex;
-                            > .field__item{
-                                &:nth-child(1), &:nth-child(2){
-                                    display: block;
+                    .gallery{
+                        .splide__arrows{
+                            position: absolute;
+                            bottom: 20px;
+                            width: 200px;
+                            right: calc(50% - 100px);
+                            button{
+                                width: 34px;
+                                height: 34px;
+                            }
+                        }
+                        .field--name-field-media-images{
+                            > .field__items{
+                                display: flex;
+                                > .field__item{
+                                    &:nth-child(1), &:nth-child(2){
+                                        display: block;
+                                    }
+                                }
+                            }
+                        }
+                        img, video{
+                            cursor: pointer;
+                        }
+                        .image-title{
+                            display: none;
+                        }
+                        .field--name-field-media-video-file{
+                            position: relative;
+                            cursor: pointer;
+                            video{
+                                height: 230px;
+                                width: auto;
+                            }
+                        .field__item:after{
+                                content: "";
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background: url(/themes/yadlabanim/images/video-play.png) no-repeat center;
+                                top: 0;
+                                left: 0;
+                            }
+                        }
+                        .splide-counter{
+                            color: $blue;
+                            text-align: center;
+                            font-family: $karantina;
+                            font-size: 1.8em;
+                            font-weight: 300;    
+                            margin-top: 25px;                        
+                        }
+                    }
+                    .lightbox{
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.80);
+                        align-items: center;
+                        justify-content: center;
+                        display: flex;
+                        z-index: -1000;
+                        opacity: 0;
+                        transition: opacity 1s;
+                        &.show{
+                            z-index: 100;
+                            opacity: 1;
+                        }
+                        .splide-counter-lightbox{
+                            color: #fff;
+                            text-align: center;
+                            font-family: $karantina;
+                            font-size: 1.8em;
+                            font-weight: 300;
+                        }
+                        .relevant-title{
+                            padding-top: 10px;
+                            min-height: 80px;
+                            color: #fff;
+                            font-weight: 500;
+                            text-align: center;
+                        }
+                        .splide__arrows.splide__arrows--rtl, .splide__arrows.splide__arrows--ltr{
+                            .splide__arrow--next{
+                                left: -80px;
+                                margin-top: -60px;
+                            }
+                            .splide__arrow--prev{
+                                right: -80px;
+                                margin-top: -60px;
+                            }
+                        }
+                        .wrapper{
+                            padding-bottom: 50px;
+                            .close{
+                                text-align: left;
+                                padding-left: 56px;
+                                img{
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+                        .splide{
+                            max-width: 90%;
+                            width: 1000px;
+                            height: 100%;
+                            .splide__slide{
+                                background-color: rgba(0,0,0,0.8);
+                            }
+                            img, video{
+                                max-width: 100%;
+                                max-height: calc(100vh - 300px);
+                                width: auto;
+                                height: auto;
+                                margin: 0;
+                            }
+                            .image-title{
+                                display: none;
+                            }
+                            li{
+                                overflow: hidden;
+                                > div{
+                                    height: 100%;
+                                    > .field{
+                                        height: 100%;
+                                        > .field__item{
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: center;
+                                            height: 100%;                                           
+                                        }
+                                    }
                                 }
                             }
                         }
                     }
-                    .field--name-field-media-video-file{
-                        position: relative;
-                        video{
-                            height: 230px;
-                            width: auto;
+                }
+                #resting-place{
+                    .content{
+                        font-weight: 300;
+                        .cemetery-name{
+                            margin-bottom: 10px;
                         }
-                       .field__item:after{
-                            content: "";
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                            background: url(/themes/yadlabanim/images/video-play.svg) no-repeat center;
-                            top: 0;
-                            left: 0;
+                        .places{
+                            margin-bottom: 20px;
+                            .field{
+                                display: flex;
+                                line-height: 1.5;
+                                .field__label{
+                                    width: 70px;
+                                    &:after{
+                                        content: ":";
+                                        margin-left: 5px;
+                                    }
+                                }
+                            }
+                        }
+                        .navigate{
+                            margin-top: 30px;
+                            a{
+                                background: url(/themes/yadlabanim/images/navigate.png) no-repeat right center;
+                                padding-right: 28px;
+                                text-decoration: underline;
+
+                            }
                         }
                     }
                 }

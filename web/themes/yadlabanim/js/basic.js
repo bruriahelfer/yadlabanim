@@ -125,7 +125,7 @@ $('select').change(function(){
       
       // Stop any ongoing animations before starting new one
       $('html, body').stop(true, false).animate({
-        scrollTop: $('#' + hash).offset().top - 60
+        scrollTop: $('#' + hash).offset().top - 30
       }, 500);
       
       $("body").removeClass("open-menu");

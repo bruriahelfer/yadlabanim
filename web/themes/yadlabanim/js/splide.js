@@ -84,28 +84,110 @@
     });
 
       // fallen gallery 
-      once('splide-init-fallen-gallery', '.fallen-gallery', context).forEach(function(element) {
-        var splide = new Splide(element, {
-          direction: 'rtl',
-          gap: '17px',
-          autoWidth: true,
-          classes: {
-            list: 'fallen-gallery', 
-            slide: 'splide__slide',  
-          },
-        });
-        
-        const counterCurrent = document.querySelector('.splide-counter .current');
-        const counterTotal   = document.querySelector('.splide-counter .total');
+// Initialize gallery
+once('splide-init-fallen-gallery', '.fallen-gallery', context).forEach(function(element) {
+  var gallerySplide = new Splide(element, {
+    direction: 'rtl',
+    gap: '17px',
+    autoWidth: true,
+    pagination: false,
+    classes: {
+      list: 'fallen-gallery', 
+      slide: 'splide__slide',  
+    },
+  });
 
-        splide.on('mounted move', function () {
-          counterCurrent.textContent = splide.index + 1;
-          counterTotal.textContent   = splide.length;
-        });
+  const counterCurrent = document.querySelector('.splide-counter .current');
+  const counterTotal   = document.querySelector('.splide-counter .total');
 
-        splide.mount();
-      
-      });
+  gallerySplide.on('mounted move', function () {
+    counterCurrent.textContent = gallerySplide.index + 1;
+    counterTotal.textContent   = gallerySplide.length;
+  });
+
+  gallerySplide.mount();
+
+  // Add click to each gallery slide
+  gallerySplide.Components.Elements.slides.forEach((slide, index) => {
+    slide.addEventListener('click', () => {
+
+      // Show the lightbox
+      const lightboxEl = document.querySelector('#images .lightbox');
+      if (lightboxEl){
+        lightboxEl.classList.add('show');
+        $(".lightbox").css("transition", "none");
+      }
+
+      // Jump immediately to the clicked slide in lightbox
+      const lightboxSplideEl = document.querySelector('.fallen-lightbox');
+      if (lightboxSplideEl && lightboxSplideEl.splideInstance) {
+        lightboxSplideEl.splideInstance.go(index, false); // <-- no animation
+      }
+    });
+  });
+  // Close lightbox on click of the close button
+  $(".lightbox .close img").on('click', function (e) { 
+    $(".lightbox").removeClass('show');
+    setTimeout(function() {
+      $(".lightbox").css("transition", "opacity 0.5s");
+    }, 1000)
+  });
+  $(".lightbox").on('click', function(e) {
+    if (!$(e.target).closest('.wrapper').length) {
+      $(".lightbox").removeClass('show');
+      setTimeout(function() {
+        $(".lightbox").css("transition", "opacity 0.5s");
+      }, 1000)
+    }
+  });
+});
+
+// Initialize lightbox Splide
+once('splide-init-fallen-lightbox', '.fallen-lightbox', context).forEach(function(element) {
+
+  var lightboxSplide = new Splide(element, {
+    direction: 'rtl',
+    gap: '80px',
+    perPage: 1,
+    pagination: false,
+    type: 'loop',
+    classes: {
+      list: 'fallen-lightbox',
+      slide: 'splide__slide',
+    },
+  });
+
+  // Save the instance on the element so we can access it later
+  element.splideInstance = lightboxSplide;
+
+  const counterCurrent = document.querySelector('.splide-counter-lightbox .current');
+  const counterTotal   = document.querySelector('.splide-counter-lightbox .total');
+  const relevantTitle  = document.querySelector('.lightbox .relevant-title');
+
+  function updateSlideData() {
+    counterCurrent.textContent = lightboxSplide.index + 1;
+    counterTotal.textContent   = lightboxSplide.length;
+
+    if (relevantTitle) {
+      relevantTitle.textContent = '';
+    }
+
+    const activeSlide = lightboxSplide.Components.Slides.getAt(lightboxSplide.index);
+
+    if (activeSlide) {
+      const titleEl = activeSlide.slide.querySelector('.image-title');
+      if (titleEl && titleEl.textContent.trim() !== '' && relevantTitle) {
+        relevantTitle.textContent = titleEl.textContent;
+      }
+    }
+  }
+
+  lightboxSplide.on('mounted move', updateSlideData);
+
+  lightboxSplide.mount();
+});
+
+
 
 
     }

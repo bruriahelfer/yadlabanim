@@ -15,10 +15,7 @@
   ]
 %}
 
-<div class="field">
-  <div class="field__label">{{ label }}</div>
-  {% if items|length > 1 %}  
-    <div class="splide fallen-gallery" role="group" aria-label="Image Gallery">
+
       <div{{ attributes.addClass(classes) }}>
         <ul class="splide__list">
           {% for item in items %}
@@ -26,14 +23,3 @@
           {% endfor %}
         </ul>
       </div>
-    </div>
-    <div class="splide-counter">
-      <span class="current">1</span>/<span class="total">{{ items|length }}</span>
-    </div>
-  {% else %}
-    {% for item in items %}
-      <li{{ item.attributes.addClass('splide__slide') }}>{{ item.content }}</li>
-    {% endfor %}
-  {% endif %}
-  </div>
-</div>
