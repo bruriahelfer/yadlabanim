@@ -34,7 +34,8 @@
             {% if content.field_media_images|render %}
               <li><a class="toscroll" href="#images">{{ "The photographs in the album"|t }}</a></li>
             {% endif %}
-            <li><a class="toscroll" href="#resting-place">{{ "His resting place"|t }}</a></li>    
+            <li><a class="toscroll" href="#resting-place">{{ "His resting place"|t }}</a></li>  
+            <li><a class="toscroll" href="#dedication">{{ "Dedication"|t }}</a></li>  
           </ul>
         </div>
         <div class="content-tabs">
@@ -93,6 +94,15 @@
                 <div class="navigate"><a href="https://www.google.com/maps/place/{{ node.field_cemetery.0.entity.field_address.value }}">{{ "Navigate to the cemetery address >"|t }}</a></div>
               </div>
             </div>
+          </div>
+          <div id="dedication" class="content-tab">
+            <div class="field">
+              <div class="field__label">{{ "Dedication"|t }}</div>
+              <div class="comments">
+                {{ content.field_dedication }}  
+              </div>
+            </div>
+          </div>
         </div>
       </div></div>
     </div>

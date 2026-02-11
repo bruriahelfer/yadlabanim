@@ -72,4 +72,15 @@ function yadlabanim_preprocess_menu__main(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_form_alter().
+ */
+function yadlabanim_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  // Check if this is the dedication comment form
+  if ($form_id == 'comment_dedic_form') {
+    $form['actions']['submit']['#value'] = t('Add a dedication');
+  }
+}
+
 ?>

@@ -182,6 +182,18 @@ body.page-node-fallen .dialog-off-canvas-main-canvas{
                                 height: 34px;
                             }
                         }
+                        .field--name-thumbnail{
+                            cursor: pointer;
+                            &:after{
+                                content: "";
+                                position: absolute;
+                                width: 100%;
+                                height: 100%;
+                                background: url(/themes/yadlabanim/images/video-play.png) no-repeat center;
+                                top: 0;
+                                left: 0;
+                            }
+                        }
                         .field--name-field-media-images{
                             > .field__items{
                                 display: flex;
@@ -205,14 +217,14 @@ body.page-node-fallen .dialog-off-canvas-main-canvas{
                                 height: 230px;
                                 width: auto;
                             }
-                        .field__item:after{
-                                content: "";
-                                position: absolute;
-                                width: 100%;
-                                height: 100%;
-                                background: url(/themes/yadlabanim/images/video-play.png) no-repeat center;
-                                top: 0;
-                                left: 0;
+                            .field__item:after{
+                                    content: "";
+                                    position: absolute;
+                                    width: 100%;
+                                    height: 100%;
+                                    background: url(/themes/yadlabanim/images/video-play.png) no-repeat center;
+                                    top: 0;
+                                    left: 0;
                             }
                         }
                         .splide-counter{
@@ -225,22 +237,6 @@ body.page-node-fallen .dialog-off-canvas-main-canvas{
                         }
                     }
                     .lightbox{
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        background: rgba(0, 0, 0, 0.80);
-                        align-items: center;
-                        justify-content: center;
-                        display: flex;
-                        z-index: -1000;
-                        opacity: 0;
-                        transition: opacity 1s;
-                        &.show{
-                            z-index: 100;
-                            opacity: 1;
-                        }
                         .splide-counter-lightbox{
                             color: #fff;
                             text-align: center;
@@ -267,13 +263,6 @@ body.page-node-fallen .dialog-off-canvas-main-canvas{
                         }
                         .wrapper{
                             padding-bottom: 50px;
-                            .close{
-                                text-align: left;
-                                padding-left: 56px;
-                                img{
-                                    cursor: pointer;
-                                }
-                            }
                         }
                         .splide{
                             max-width: 90%;
@@ -282,12 +271,17 @@ body.page-node-fallen .dialog-off-canvas-main-canvas{
                             .splide__slide{
                                 background-color: rgba(0,0,0,0.8);
                             }
-                            img, video{
+                            img, video {
                                 max-width: 100%;
                                 max-height: calc(100vh - 300px);
                                 width: auto;
                                 height: auto;
                                 margin: 0;
+                            }
+                            .field--name-field-media-oembed-video iframe{
+                                width: 100%;
+                                height: calc(100vh - 300px);    
+                                object-fit: contain;                            
                             }
                             .image-title{
                                 display: none;
@@ -341,7 +335,116 @@ body.page-node-fallen .dialog-off-canvas-main-canvas{
                         }
                     }
                 }
+                #dedication{
+                    .lightbox form{
+                        .form-item-field-dedic-0-value{
+                            border-radius: 7px;
+                            border: 2px solid #B9A981;
+                            background: #FFFAF8;
+                            padding: 15px 20px;
+                            position: relative;
+                            textarea{
+                                resize: none;
+                                border: none;
+                                outline: none;
+                                background: transparent;
+                                z-index: 1;
+                                position: relative;
+                                height: 200px;
+                                padding: 5px 0;
+                                line-height: 1.3;
+                                font-weight: 300;
+                                font-size: 0.9em;
+                            }
+                            .description{
+                                .placeholder{
+                                    position: absolute;
+                                    top: 45px;
+                                    font-weight: 300;
+                                }
+                                ul{
+                                    position: absolute;
+                                    bottom: 22px;
+                                    z-index: 1;
+                                    display: flex;
+                                    list-style: none;
+                                    flex-wrap: wrap;
+                                    padding: 0;
+                                    margin: 0;
+                                    font-size: 0.75em;
+                                    font-weight: 300;
+                                    li{
+                                        border-radius: 8px;
+                                        border: 1px solid #B9A981;
+                                        background: #FFF;
+                                        box-shadow: 0 9px 10px 2px #E1DCC7;
+                                        padding: 8px 12px;
+                                        margin-left: 12px;
+                                        margin-bottom: 12px;
+                                        cursor: pointer;
+                                    }
+                                }
+                                .counter{
+                                    text-align: left;
+                                    font-weight: 300;
+                                    font-size: 0.6em;
+                                    display: block;
+                                }
+                            }
+                            &.input-full{
+                                .description{
+                                    .placeholder{                                
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
+        }
+    }
+}
+
+.lightbox{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.80);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    z-index: -1000;
+    opacity: 0;
+    transition: all 1s;
+    &.show{
+        z-index: 1001;
+        opacity: 1;
+    }
+    .close{
+        text-align: left;
+        padding-left: 56px;
+        img{                                    
+            cursor: pointer;
+        }
+    }
+    &.simple .wrapper{
+        position: relative;
+        box-sizing: border-box;
+        width: 650px;
+        .close{
+            padding-left: 0;
+        }
+        .inside{
+            box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.07);
+            border-radius: 13px;
+            background: #FFF;
+            padding: 35px;
+            margin: 0 40px;
+            max-height: calc(80vh - 80px);
+            overflow: auto;
         }
     }
 }

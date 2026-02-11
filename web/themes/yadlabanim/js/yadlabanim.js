@@ -70,9 +70,9 @@
 
           // fallen menu
 
-          $("header .open-close-arrow").on('click', function (e) { 
+          $("header .open-close-arrow").unbind('click').bind('click', function (e) {
             if ($("header").hasClass('close-side-menu')){
-              $("header").removeClass('close-side-menu').addClass('open-side-menu');
+              $("header").removeClass('close-side-menu').addClass('open-side-menu');      
               $(".open-close-arrow .open-icon").addClass('hide');
               $(".open-close-arrow .close-icon").removeClass('hide');
               setTimeout(function() {
@@ -84,6 +84,77 @@
               $(".open-close-arrow .open-icon").removeClass('hide');
               $("body").removeClass('sub-menu-open');
               $(".open-sub-menu").removeClass('open-sub-menu');
+            }
+          });
+          // description with ul and counter
+
+          $('textarea').each(function() {
+            var $textarea = $(this);
+            var $description = $textarea.closest('.form-item').find('.description');
+            var $ul = $description.find('ul');
+            var $counter = $description.find('.counter');
+            var $number = $counter.find('.number');
+            var maxLength = 400;
+
+            if ($ul.length === 0) {
+              return;
+            }
+
+            function updateCounter() {
+              var length = $textarea.val().length;
+
+              // Optional: limit to max 150 characters
+              if (length > maxLength) {
+                $textarea.val($textarea.val().substring(0, maxLength));
+                length = maxLength;
+              }
+
+              $number.text(length);
+            }
+
+            // On typing
+            $textarea.on('input', function() {
+              var value = $(this).val().trim();
+
+              // Show / hide suggestions
+              if (value.length > 0) {
+                $ul.css("opacity", "0");
+              } else {
+                $ul.css("opacity", "1");
+              }
+
+              updateCounter();
+            });
+
+            // Click suggestion
+            $ul.find('li').on('click', function() {
+              var text = $(this).text();
+              $textarea.val(text);
+              $ul.css("opacity", "0");
+              $textarea.focus();
+              updateCounter(); // Update counter after inserting text
+            });
+
+            // Initialize counter on page load
+            updateCounter();
+          });
+
+
+          // lightbox
+
+          // Close lightbox on click of the close button
+          $(".lightbox .close img").on('click', function (e) { 
+            $(this).closest('.lightbox').removeClass('show');
+            setTimeout(function() {
+              $(this).closest('.lightbox').css("transition", "opacity 0.5s");
+            }, 1000)
+          });
+          $(".lightbox").on('click', function(e) {
+            if (!$(e.target).closest('.wrapper').length) {
+              $(this).removeClass('show');
+              setTimeout(function() {
+                $(this).closest('.lightbox').css("transition", "opacity 0.5s");
+              }, 1000)
             }
           });
 

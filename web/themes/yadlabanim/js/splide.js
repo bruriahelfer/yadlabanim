@@ -115,7 +115,9 @@ once('splide-init-fallen-gallery', '.fallen-gallery', context).forEach(function(
       const lightboxEl = document.querySelector('#images .lightbox');
       if (lightboxEl){
         lightboxEl.classList.add('show');
-        $(".lightbox").css("transition", "none");
+        setTimeout(function() {
+          $(".lightbox").css("transition", "none");
+        }, 1000)
       }
 
       // Jump immediately to the clicked slide in lightbox
@@ -124,21 +126,6 @@ once('splide-init-fallen-gallery', '.fallen-gallery', context).forEach(function(
         lightboxSplideEl.splideInstance.go(index, false); // <-- no animation
       }
     });
-  });
-  // Close lightbox on click of the close button
-  $(".lightbox .close img").on('click', function (e) { 
-    $(".lightbox").removeClass('show');
-    setTimeout(function() {
-      $(".lightbox").css("transition", "opacity 0.5s");
-    }, 1000)
-  });
-  $(".lightbox").on('click', function(e) {
-    if (!$(e.target).closest('.wrapper').length) {
-      $(".lightbox").removeClass('show');
-      setTimeout(function() {
-        $(".lightbox").css("transition", "opacity 0.5s");
-      }, 1000)
-    }
   });
 });
 

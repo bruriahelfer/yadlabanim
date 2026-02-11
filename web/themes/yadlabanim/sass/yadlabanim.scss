@@ -34,6 +34,7 @@ body{
     }
     input, textarea, select{
       font-family: $rubik;
+      max-width: 100%;
     }
     &:not(.page-node){
       main{
