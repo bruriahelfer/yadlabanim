@@ -4,6 +4,15 @@
 
 .banner{
     position: relative;
+    .field--name-field-banner-mobile{
+        display: none;
+        @include res(s-m){
+            display: block;
+            + .field--name-field-banner{
+                display: none;
+            }
+        }
+    }
     .field--name-field-banner{
         .field--name-field-media-video-file{
             video{
@@ -11,6 +20,9 @@
                 width: 100%;
                 object-fit: cover;
             }
+        }
+        img{
+            width: 100%;
         }
     }
     .on-image{
@@ -39,6 +51,12 @@
             z-index: 10;
             position: relative;
         }
+    }
+}
+
+.titles-no-banner{
+    h1{
+        margin-top: 40px;
     }
 }
 
@@ -85,9 +103,6 @@ body.front{
         }
     }   
     @media (min-height: 670px) and (max-height: 800px){
-        .paragraph--type--view .view-events.view-display-id-block_1{
-            margin-top: 20px;
-        }
         .event-teaser-node{
             font-size: 0.9em;
             .field--name-field-event-who, h2, .field--name-field-teaser{
@@ -115,8 +130,24 @@ body.front{
 }
 
 .event-teaser-node{
+    height: 100%;
+    > div{
+        height: 100%;
+        a{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
     .field--name-field-thumbnail{
         margin-bottom: 15px;
+        &.no-image{
+            img{
+                border: 1px solid #ddd;
+                box-sizing: border-box;
+            }
+        }
     }
     .field--name-field-event-who{
         border-radius: 12px;
@@ -131,7 +162,7 @@ body.front{
         font-size: 1.25em;
         margin-bottom: 10px;
     }
-    .field--name-field-teaser{
+    .teaser{
         font-weight: 300;
         margin-bottom: 15px;
         p{
@@ -139,12 +170,96 @@ body.front{
         }
     }
     .read-more{
-        font-weight: 500px;
+        font-weight: 500;
         text-align: left;
+        margin-top: auto;
+        width: 100%;
         &:after{
             content: ">";
             margin-right: 5px;
         }
+    }
+}
+
+.fallen-teaser-node{
+    height: 100%;
+    > div{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .image{
+        margin-bottom: 15px;
+        img{
+            border-radius: 7px;
+            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+        }
+    }
+    h2{
+        font-size: 0.75em;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+    .dates{
+        font-size: 0.9em;
+        margin-bottom: 20px;
+    }
+    .read-flag{
+        margin-top: auto;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.75em;
+        .read-more{
+            font-weight: 500;
+            text-align: left;
+            &:after{
+                content: ">";
+                margin-right: 5px;
+            }
+        }
+        .flag{
+            position: relative;
+            a{
+                border-radius: 10px;
+                border: 2px solid $bglightgold;
+                background: #B9A981;
+                display: flex;
+                align-items: center;
+                font-weight: 500;
+                color: #fff;
+                padding: 0 5px;
+                height: 40px;
+                box-sizing: border-box;
+                &:after{
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    content: "";
+                    background: url(/themes/yadlabanim/images/candle.png) no-repeat center #E7B153;
+                    background-size: 22px;
+                    margin-right: 5px;
+                }
+            }
+            &.action-unflag{
+                a{
+                    pointer-events: none;
+                    &:before{
+                        content: "";
+                        position: absolute;
+                        background: url(/themes/yadlabanim/images/nizkor.gif) no-repeat;
+                        width: 15px;
+                        height: 28px;
+                        background-size: 100%;
+                        left: 12px;
+                        top: -5px;
+                    }
+                }
+            }
+        }
+
     }
 }
 

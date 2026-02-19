@@ -83,6 +83,7 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
         array (
             'Robo\\' => 5,
             'Recurr\\' => 7,
+            'ReCaptcha\\' => 10,
         ),
         'P' => 
         array (
@@ -92,6 +93,7 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
             'Psr\\Http\\Client\\' => 16,
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
+            'Psr\\Cache\\' => 10,
             'PhpParser\\' => 10,
             'Peast\\' => 6,
         ),
@@ -124,9 +126,11 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
             'Drupal\\Composer\\Plugin\\ProjectMessage\\' => 38,
             'Drupal\\Component\\' => 17,
             'DrupalCodeGenerator\\' => 20,
+            'Doctrine\\Persistence\\' => 21,
             'Doctrine\\Deprecations\\' => 22,
             'Doctrine\\Common\\Lexer\\' => 22,
             'Doctrine\\Common\\Collections\\' => 28,
+            'Doctrine\\Common\\' => 16,
             'Dflydev\\DotAccessData\\' => 22,
         ),
         'C' => 
@@ -300,6 +304,10 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
         array (
             0 => __DIR__ . '/..' . '/simshaun/recurr/src/Recurr',
         ),
+        'ReCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha',
+        ),
         'Psy\\' => 
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src',
@@ -324,6 +332,10 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Psr\\Cache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
         'PhpParser\\' => 
         array (
@@ -393,6 +405,10 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
         array (
             0 => __DIR__ . '/..' . '/chi-teck/drupal-code-generator/src',
         ),
+        'Doctrine\\Persistence\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/persistence/src/Persistence',
+        ),
         'Doctrine\\Deprecations\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/deprecations/src',
@@ -404,6 +420,11 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
         'Doctrine\\Common\\Collections\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/collections/src',
+        ),
+        'Doctrine\\Common\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/doctrine/common/src',
+            1 => __DIR__ . '/..' . '/doctrine/event-manager/src',
         ),
         'Dflydev\\DotAccessData\\' => 
         array (

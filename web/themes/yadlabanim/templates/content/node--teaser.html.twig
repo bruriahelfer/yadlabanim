@@ -1,0 +1,21 @@
+<article class="event-teaser-node">
+  <div{{ content_attributes }}>
+    <a href="{{ url }}">
+        {% if content.field_thumbnail|render %}
+          {{ content.field_thumbnail }}
+        {% else %}
+          <div class="field--name-field-thumbnail no-image"><img src="/themes/yadlabanim/images/default-image-727x405.png" alt="yad labanim logo" /></div>
+        {% endif %}
+        {{ content.field_event_who }}
+        <h2>{{ label }}</h2>
+        <div class="teaser">
+          {% if content.field_teaser|render %}
+            {{ content.field_teaser }}
+          {% else %}
+            {{ content.body }}
+          {% endif %}
+        </div>
+        <div class="read-more">{{ "For more details"|t }}</div>
+    </a>
+  </div>
+</article>

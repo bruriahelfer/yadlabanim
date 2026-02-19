@@ -77,10 +77,35 @@ function yadlabanim_preprocess_menu__main(&$variables) {
  * Implements hook_form_alter().
  */
 function yadlabanim_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-  // Check if this is the dedication comment form
   if ($form_id == 'comment_dedic_form') {
     $form['actions']['submit']['#value'] = t('Add a dedication');
   }
+  if ($form_id == 'comment_memory_form') {
+    $form['actions']['submit']['#value'] = t('Sending a memory');
+  }
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-search-block-2') {
+    $form['#action'] = '/search';
+  }
+}
+
+function yadlabanim_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if ($node->hasField('field_date_english') && !$node->get('field_date_english')->isEmpty()) {
+    $date_value = $node->get('field_date_english')->value;
+    $variables['hebrew_date'] = _convert_to_hebrew_date($date_value);
+  }
+}
+
+function _convert_to_hebrew_date($date_string) {
+  $timestamp = strtotime($date_string);
+  $month = (int) date('n', $timestamp);
+  $day   = (int) date('j', $timestamp);
+  $year  = (int) date('Y', $timestamp);
+
+  $jd = gregoriantojd($month, $day, $year);
+  $jewish = jdtojewish($jd, true, CAL_JEWISH_ADD_GERESHAYIM);
+
+  return mb_convert_encoding($jewish, 'UTF-8', 'ISO-8859-8');
 }
 
 ?>

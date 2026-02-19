@@ -9,7 +9,7 @@
 
         // main menu
 
-        $("#block-yadlabanim-mainmenu .menu-level-0 > li.menu-item--expanded").on('click', function (e) { 
+        $("#block-yadlabanim-mainmenu .menu-level-0 > li.menu-item--expanded").unbind('click').bind('click', function (e) {
           if ($(this).hasClass('open-sub-menu')) {
             $("body").removeClass('sub-menu-open');
             $(this).removeClass('open-sub-menu');
@@ -29,7 +29,7 @@
           }
         });
 
-        $(".search-button").on('click', function (e) { 
+        $(".search-button").unbind('click').bind('click', function (e) { 
           if ($(this).parent().hasClass('search-open')) {
             $(this).parent().removeClass('search-open');
           } else {
@@ -86,6 +86,26 @@
               $(".open-sub-menu").removeClass('open-sub-menu');
             }
           });
+
+          // file field
+
+          function updateFileFieldState() {
+            $('.js-form-type-managed-file').each(function () {
+              const hasFile = $(this).find('.js-form-managed-file .file').length > 0;
+              $(this).toggleClass('has-file', hasFile);
+            });
+          }
+          updateFileFieldState();
+          $(document).on('ajaxComplete', function () {
+            updateFileFieldState();
+          });
+
+          // fallen - message
+
+          if ($("body").hasClass('page-node-fallen') && $('.region-wrapper [data-drupal-messages]').length > 0) {
+            $('.region-wrapper').closest('.lightbox').addClass('show');
+            $("body").addClass('lightbox-show');
+          }
           // description with ul and counter
 
           $('textarea').each(function() {
@@ -142,19 +162,21 @@
 
           // lightbox
 
-          // Close lightbox on click of the close button
-          $(".lightbox .close img").on('click', function (e) { 
-            $(this).closest('.lightbox').removeClass('show');
-            setTimeout(function() {
-              $(this).closest('.lightbox').css("transition", "opacity 0.5s");
-            }, 1000)
+          // Show the lightbox
+          $(".lightbox-open").unbind('click').bind('click', function (e) { 
+            $(this).closest('.lightbox-wrapper').find('.lightbox').addClass('show');
+            $("body").addClass('lightbox-show');
           });
-          $(".lightbox").on('click', function(e) {
+
+          // Close lightbox on click of the close button
+          $(".lightbox .close img").unbind('click').bind('click', function (e) { 
+            $(this).closest('.lightbox').removeClass('show');
+            $("body").removeClass('lightbox-show');
+          });
+          $(".lightbox").unbind('click').bind('click', function (e) { 
             if (!$(e.target).closest('.wrapper').length) {
               $(this).removeClass('show');
-              setTimeout(function() {
-                $(this).closest('.lightbox').css("transition", "opacity 0.5s");
-              }, 1000)
+              $("body").removeClass('lightbox-show');
             }
           });
 

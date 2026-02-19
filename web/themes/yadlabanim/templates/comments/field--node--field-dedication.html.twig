@@ -27,16 +27,21 @@
  */
 #}
 <section{{ attributes }}>
-  <button type="button" class="btn-new-dedication">{{ 'New Dedication'|t }}</button>
+  <div class="button-add">
+    <button type="button" class="btn-new-dedication lightbox-open">
+      {{ 'New Dedication'|t }}
+      <svg width="29" height="29" viewBox="0 0 29 29" fill="none"><g clip-path="url(#clip0_1607_2882)"><path d="M14.2813 7.07004L13.9998 21.2106" stroke="#473F52" stroke-width="1.66678" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.07031 13.9996L21.2109 14.2811" stroke="#473F52" stroke-width="1.66678" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_1607_2882"><rect width="20.0017" height="20.0017" fill="white" transform="translate(0 13.8591) rotate(-43.8597)"/></clipPath></defs></svg>
+    </button>
+  </div>
   {% if comments and not label_hidden %}
     {{ title_prefix }}
     <h2{{ title_attributes }}>{{ label }}</h2>
     {{ title_suffix }}
   {% endif %}
+  
+  {{ drupal_view("comment","block_1") }}
 
-  {{ comments }}
-
-  <div class="lightbox simple show">
+  <div class="lightbox simple">
     <div class="wrapper">
       <div class="close"><img src="/themes/yadlabanim/images/close-popup.png"></div>
       <div class="inside">

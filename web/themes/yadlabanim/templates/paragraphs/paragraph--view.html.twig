@@ -1,0 +1,15 @@
+{% set field_item = content.field_view[0] %}
+{% set view_id = field_item['#view_id'] %}
+{% set display_id = field_item['#display_id'] %}
+
+{% block paragraph %}
+  {% if content.field_background_color|render %}
+    <div class="paragraph paragraph--type--view has-bg-color results-{{ drupal_view_result(view_id, display_id)|length }} view-id-{{ view_id }} view-display-{{ display_id }}" style="background-color: {{ content.field_background_color.0['#markup'] }};">
+  {% else %}
+    <div class="paragraph paragraph--type--view no-bg-color results-{{ drupal_view_result(view_id, display_id)|length }} view-id-{{ view_id }} view-display-{{ display_id }}">
+  {% endif %}
+    {% block content %}
+      {{ content|without('field_background_color') }}
+    {% endblock %}
+  </div>
+{% endblock paragraph %}

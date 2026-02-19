@@ -19,7 +19,7 @@
       <div{{ attributes.addClass(classes) }}>
         <ul class="splide__list">
           {% for item in items %}
-            <li{{ item.attributes.addClass('splide__slide') }}>{{ item.content }}</li>
+            <li class='lightbox-open splide__slide'>{{ item.content }}</li>
           {% endfor %}
         </ul>
       </div>

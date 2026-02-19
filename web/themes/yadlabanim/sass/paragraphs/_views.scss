@@ -1,9 +1,21 @@
 .paragraph--type--view{
+    &.results-0{
+        display: none;
+        &.view-id-search.view-display-block_1{
+            display: block;
+        }
+    }
     .titles{
         @include width;
+        margin-bottom: 30px;
+        .front &{
+            margin-bottom: 70px;
+        }
+        @media (min-height: 670px) and (max-height: 800px){
+            margin-bottom: 20px;
+        }
     }
     .view-events.view-display-id-block_1{
-        margin-top: 70px;
         .splide__arrow--prev{
             right: -35px;
             @include res(s-m){
@@ -111,6 +123,72 @@
                         }
                     }
                 }
+            }
+        }
+    }
+}
+
+.view-search.view-display-id-block_1, .view-search.view-display-id-block_2{
+    @include width;
+    padding-bottom: 40px;
+    .splide__arrows{
+        position: absolute;
+        bottom: 20px;
+        width: 200px;
+        right: calc(50% - 100px);
+        button{
+            width: 34px;
+            height: 34px;
+        }
+    }
+    .search-counter-1, .search-counter-2{
+        color: $blue;
+        text-align: center;
+        font-family: $karantina;
+        font-size: 1.8em;
+        font-weight: 300;    
+        margin-top: 50px;                        
+    }
+    li{
+        .views-field, .field-content{
+            height: 100%;
+            display: block;
+        }
+    }
+}
+
+.view-search.view-display-id-block_1{
+    .view-filters{
+        margin-bottom: 70px;
+        form{
+            display: flex;
+            width: 565px;
+            max-width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            font-size: 0.75em;
+            .js-form-item{
+                width: 100%;
+                input{
+                    width: 100%;
+                    border-radius: 10px;
+                    border: 3px solid #B9A981;
+                    background: rgba(245, 244, 243, 0.95);
+                    height: 70px;
+                    padding: 0 30px 0 80px;
+                }
+            }
+            .form-submit{
+                position: absolute;
+                left: 20px;
+                top: 15px;
+                background: url(/themes/yadlabanim/images/search-black.svg) no-repeat center center;
+                border: none;
+                text-indent: -9999px;
+                padding: 0;
+                width: 40px;
+                height: 40px;
+                cursor: pointer;
             }
         }
     }

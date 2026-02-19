@@ -32,9 +32,16 @@ body{
         font-size: 1em;
       }
     }
-    input, textarea, select{
+    input, textarea, select, button{
       font-family: $rubik;
       max-width: 100%;
+      font-size: 1em;
+    }
+    main{
+      position: relative;
+    }
+    &.lightbox-show main{
+      z-index: 1000;
     }
     &:not(.page-node){
       main{
@@ -69,6 +76,11 @@ body{
   position: relative;
 }
 
+.field--type-image{
+  .image-title{
+    display: none;
+  }
+}
 
 h1, h2, h3, h4, h5, h6{
   margin: 0;
@@ -176,7 +188,7 @@ video{
   display: none;
 }
 
-#block-yadlabanim-primary-local-tasks{
+#block-yadlabanim-tabs{
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -227,6 +239,9 @@ video{
   -webkit-box-align: center;align-items: center;
   -webkit-box-pack: center;justify-content: center;
   z-index: 101;
+  div{
+    display: none;
+  }
 }
 
 .region-message .messages__wrapper{
@@ -324,6 +339,7 @@ form{
 }
 
 .breadcrumbs-wrapper{
+  padding-top: 20px;
   ol{
     padding: 0;
     margin: 0;

@@ -4,7 +4,8 @@
 
   Drupal.behaviors.splide = {
     attach: function (context, settings) {
-      
+      $(document).ready(function() {
+
       // events front 
       once('splide-init-events', '.view-content-events', context).forEach(function(element) {
         var splide = new Splide(element, {
@@ -111,15 +112,6 @@ once('splide-init-fallen-gallery', '.fallen-gallery', context).forEach(function(
   gallerySplide.Components.Elements.slides.forEach((slide, index) => {
     slide.addEventListener('click', () => {
 
-      // Show the lightbox
-      const lightboxEl = document.querySelector('#images .lightbox');
-      if (lightboxEl){
-        lightboxEl.classList.add('show');
-        setTimeout(function() {
-          $(".lightbox").css("transition", "none");
-        }, 1000)
-      }
-
       // Jump immediately to the clicked slide in lightbox
       const lightboxSplideEl = document.querySelector('.fallen-lightbox');
       if (lightboxSplideEl && lightboxSplideEl.splideInstance) {
@@ -175,8 +167,99 @@ once('splide-init-fallen-lightbox', '.fallen-lightbox', context).forEach(functio
 });
 
 
+// serach
 
+once('splide-init-seacrh-1', '.view-content-search-1', context).forEach(function(element) {
+  var seacrhSplide1 = new Splide(element, {
+    classes: {
+      list: 'view-content-search1', 
+      slide: 'splide__slide',  
+    },
+    direction: 'rtl',
+    gap: '80px',
+    pagination: false,
+    perPage: 4,
+    breakpoints: {
+      1700:{
+        gap: '40px',
+      },
+      1600: {
+        gap: '40px',
+        perPage: 3,
+      },
+      1330: {
+        gap: '40px',
+        perPage: 2,             
+      },
+      1024: {
+        gap: '40px',
+        perPage: 2,             
+      },
+      600: {
+        perPage: 1,             
+      },
+    },
+  });
 
+  const counterCurrent1 = document.querySelector('.search-counter-1 .current');
+  const counterTotal1   = document.querySelector('.search-counter-1 .total');
+
+  seacrhSplide1.on('mounted move', function () {
+    counterCurrent1.textContent = seacrhSplide1.index + 1;
+    counterTotal1.textContent   = seacrhSplide1.length;
+  });
+
+  seacrhSplide1.mount();
+
+});
+
+once('splide-init-seacrh-2', '.view-content-search-2', context).forEach(function(element) {
+  var seacrhSplide2 = new Splide(element, {
+    classes: {
+      list: 'view-content-search-2', 
+      slide: 'splide__slide',  
+    },
+    direction: 'rtl',
+    gap: '30px',
+    pagination: false,
+    perPage: 5,
+    breakpoints: {
+      1700:{
+        gap: '20px',
+      },
+      1600: {
+        perPage: 4,
+      },
+      1330: {
+        gap: '20px',
+        perPage: 3,             
+      },
+      1024: {
+        gap: '20px',
+        perPage: 3,             
+      },
+      800: {
+        perPage: 2,             
+      },
+      560: {
+        perPage: 1, 
+      }
+    },
+  });
+
+  const counterCurrent2 = document.querySelector('.search-counter-2 .current');
+  const counterTotal2   = document.querySelector('.search-counter-2 .total');
+
+  seacrhSplide2.on('mounted move', function () {
+    counterCurrent2.textContent = seacrhSplide2.index + 1;
+    counterTotal2.textContent   = seacrhSplide2.length;
+  });
+
+  seacrhSplide2.mount();
+
+});
+
+      });
     }
   };
 

@@ -1,0 +1,135 @@
+<article class="node--fallen node--type-fallen node--view-mode-full clearfix">
+    <div class="left">
+      {{ content.field_main_image }}
+    </div>
+    <div class="right">
+      <div class="top-area">
+        <div class="width-wrapper-right">
+          <div class="breadcrumbs-wrapper">
+            {% include '/themes/yadlabanim/templates/content/breadcrumbs.html.twig'  %}
+          </div>
+          <div class="type">
+            {% if content.field_type['#items'].value == "idf" %}
+              <a href="">{{ "Israel Systems"|t }}</a>
+            {% else %}
+              <a href="">{{ "Hostilities"|t }}</a>
+            {% endif %}
+          </div>
+          <div class="title-wrapper"><h1 class="page-title">{{ node.field_rank.value }} {{ node.label }}</h1><span>{{ 'Z"L'|t }}</span></div>
+          <div class="teaser">
+            {% if content.field_date_english|render %}
+              <div class="dates">{{ "Date of death"|t }} {% if content.field_date_hebrew|render %}{{ node.field_date_hebrew.value }}{% else %}{{ hebrew_date }}{% endif %} - {{ content.field_date_english['#items'].value|date('U')|format_date('shor') }}</div>   
+            {% elseif content.field_date_hebrew|render %}
+              <div class="dates">{{ "Date of death"|t }} {{ node.field_date_hebrew.value }}</div>
+            {% endif %}
+            {{ content.field_teaser}}
+          </div>
+        </div>
+        <div class="flag-facebook">
+          {{ content.flag_candle }}
+          <div class="facebook-share-button"><a href="https://www.facebook.com/sharer/sharer.php?u={{ url('<current>')|render }}">
+            {{ "Share"|t }}<svg width="12" height="21" viewBox="0 0 12 21" fill="none"><path d="M3.21345 11.8292C3.13493 11.8286 1.40749 11.8148 0.622285 11.8086C0.203512 11.8052 0.0738972 11.6471 0.0770284 11.2545C0.0853784 10.2076 0.0939371 9.1345 0.102287 8.08757C0.105627 7.66879 0.263711 7.53918 0.656311 7.54231L3.24747 7.56298C3.2481 7.48446 3.26021 5.9664 3.26584 5.25972C3.27419 4.21279 3.46534 3.21966 3.99611 2.30777C4.55327 1.36991 5.34348 0.748013 6.34099 0.389518C6.9972 0.159177 7.65237 0.0597022 8.35905 0.0653385L10.924 0.0857959C11.2905 0.0887184 11.4463 0.247011 11.4433 0.613438L11.4195 3.5972C11.4166 3.96363 11.2583 4.11941 10.8919 4.11649C10.1852 4.11086 9.47853 4.10522 8.77164 4.12576C8.06496 4.12012 7.69582 4.45745 7.68997 5.19031C7.65754 5.9753 7.67766 6.73453 7.67119 7.54591L10.7073 7.57012C11.1261 7.57346 11.2819 7.73176 11.2785 8.15053L11.2533 11.3175C11.2499 11.7363 11.118 11.8661 10.6731 11.8626C9.73082 11.855 7.71547 11.839 7.63695 11.8383L7.5689 20.3709C7.56535 20.8158 7.43323 20.9718 6.96211 20.968C5.86283 20.9593 4.78972 20.9507 3.69044 20.9419C3.29784 20.9388 3.14206 20.7805 3.14519 20.3879C3.16711 17.6397 3.21282 11.9078 3.21345 11.8292Z" fill="#473F52"/></svg>
+          </a></div>      
+        </div>
+      </div>
+      <div class="tabs"><div class="width-wrapper-right">
+        <div class="menu-tabs">
+          <ul>
+            {% if content.body|render %}
+              <li><a class="toscroll" href="#body">{{ "Story of his life"|t }}</a></li>
+            {% endif %}
+            {% if content.field_media_images|render %}
+              <li><a class="toscroll" href="#images">{{ "The photographs in the album"|t }}</a></li>
+            {% endif %}
+            <li><a class="toscroll" href="#resting-place">{{ "His resting place"|t }}</a></li>  
+            <li><a class="toscroll" href="#dedication">{{ "Dedication"|t }}</a></li>  
+          </ul>
+        </div>
+        <div class="content-tabs">
+          {% if content.body|render %}
+            <div id="body" class="content-tab">
+              {{ content.body }}
+              <div class="hide read-more">{{ "Read more"|t }}<img src="/themes/yadlabanim/images/readmore.svg"></div>
+            </div>
+          {% endif %}
+          {% if content.field_media_images|render %}
+            <div id="images" class="content-tab lightbox-wrapper">
+              <div class="field">
+                <div class="field__label">{{ "The photographs in the album"|t }}</div>
+                <div class="gallery">
+                  <div class="splide fallen-gallery" role="group" aria-label="Image Gallery">
+                    {{ content.field_media_images }}
+                    <div class="splide-counter">
+                      <span class="total">{{ items|length }}</span> / <span class="current">1</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="lightbox"><div class="wrapper">
+                  <div class="close"><img src="/themes/yadlabanim/images/close-popup.png"></div>
+                  <div class="splide fallen-lightbox" role="group" aria-label="Image Gallery">
+                      <div class="splide__track">
+                        <ul class="splide__list">
+                          {% for item in node.field_media_images %}
+                            <li class="splide__slide">
+                              {{ drupal_entity('media', item.entity.id(), 'lightbox', false) }}
+                              <div class="image-title">{% if item.entity.field_media_video_file is not empty %}{{ item.entity.field_media_video_file.0.description }}{% endif %}</div>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="relevant-title"></div>
+                    <div class="splide-counter-lightbox">
+                      <span class="total">{{ items|length }}</span> / <span class="current">1</span>
+                    </div>
+                  </div>
+                </div></div>
+              </div>
+            </div>
+          {% endif %}
+          <div id="resting-place" class="content-tab">
+            <div class="field">
+              <div class="field__label">{{ "His resting place"|t }}</div>
+              <div class="content">
+                <div class="cemetery-name">{{ content.field_cemetery }}</div>
+                <div class="places">
+                  {{ content.field_area }}
+                  {{ content.field_plot}}
+                  {{ content.field_line }}
+                  {{ content.field_grave }}
+                </div>
+                <div class="TNCBE">{{ "T.N.C.B.E."|t }}</div>
+                <div class="navigate"><a href="https://www.google.com/maps/place/{{ node.field_cemetery.0.entity.field_address.value }}">{{ "Navigate to the cemetery address >"|t }}</a></div>
+              </div>
+            </div>
+          </div>
+          <div id="dedication" class="content-tab">
+            <div class="field">
+              <div class="field__label">{{ "Dedication"|t }}</div>
+              <div class="comments lightbox-wrapper">
+                {{ content.field_dedication }}  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <footer>
+        <div class="width-wrapper-right">
+            <div class="right">
+              <div class="name">{{ node.label }} <span>{{ 'Z"L'|t }}</span></div>
+              <div class="description">{{ "Share a personal story with us – a message, photo or video."|t }}</div>
+            </div>
+            <div class="left lightbox-wrapper">
+              <button type="button" class="btn-new-memory lightbox-open">{{ 'Memory sharing'|t }}</button>
+              <div class="lightbox simple">
+                <div class="wrapper">
+                  <div class="close"><img src="/themes/yadlabanim/images/close-popup.png"></div>
+                  <div class="inside">
+                    {{ content.field_memory_sharing}}
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </footer>
+    </div>
+</article>
