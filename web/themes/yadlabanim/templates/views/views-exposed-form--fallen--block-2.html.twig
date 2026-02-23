@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Default theme implementation of a views exposed form.
+ *
+ * Available variables:
+ * - form: A render element representing the form.
+ *
+ * @see template_preprocess_views_exposed_form()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if q is not empty %}
+  {#
+    This ensures that, if clean URLs are off, the 'q' is added first,
+    as a hidden form element, so that it shows up first in the POST URL.
+  #}
+{{ q }}
+{% endif %}
+<div class="main-search">
+  {{ form.combine }}
+  <div class="search-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.06636 15.6601C12.708 15.6601 15.6601 12.708 15.6601 9.06636C15.6601 5.42476 12.708 2.47266 9.06636 2.47266C5.42476 2.47266 2.47266 5.42476 2.47266 9.06636C2.47266 12.708 5.42476 15.6601 9.06636 15.6601Z" stroke="#473F52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.3084 17.3086L13.7227 13.7229" stroke="#473F52" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <div class="filter-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.2716 6.61059C3.25939 4.82764 4.69486 3.37238 6.4778 3.36017C8.26075 3.34796 9.71601 4.78342 9.72822 6.56637C9.74043 8.34932 8.30496 9.80458 6.52202 9.81679C4.73907 9.829 3.28381 8.39353 3.2716 6.61059Z" stroke="#473F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.2718 19.434L3.36007 19.5224" stroke="#473F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19.4495 11.8802L19.4274 8.65234C19.4235 8.08162 19.1931 7.53582 18.7867 7.13501C18.3804 6.73421 17.8315 6.51124 17.2608 6.51515L9.72899 6.56673" stroke="#473F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16.2716 19.4336C16.2594 17.6506 17.6949 16.1954 19.4778 16.1832C21.2607 16.171 22.716 17.6064 22.7282 19.3894C22.7404 21.1723 21.305 22.6276 19.522 22.6398C17.7391 22.652 16.2838 21.2165 16.2716 19.4336Z" stroke="#473F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</div>
+<div class="filters-wrapper hide">
+  <div class="filters">
+    {{ form|without('combine') }}
+  </div>
+</div>

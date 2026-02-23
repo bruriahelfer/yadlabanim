@@ -2,11 +2,11 @@
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ base_url }}{{ homeprefix }}"><span itemprop="name">{{ "Home Page"|t }}</span><meta itemprop="position" content="1" /></a><span class="arrow">›</span></li>
     {% if node.bundle|clean_class == "fallen" %}
         {% if content.field_type['#items'].value == "idf" %}
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href=""><span itemprop="item"><span itemprop="name">{{ "Israeli war dead"|t }}</span><meta itemprop="position" content="2"></a></span><span class="arrow">›</span></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ path('entity.node.canonical', {'node': 42}) }}"><span itemprop="item"><span itemprop="name">{{ "Israeli war dead"|t }}</span><meta itemprop="position" content="2"></a></span><span class="arrow">›</span></li>
         {% else %}
-            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href=""><span itemprop="item"><span itemprop="name">{{ "Casualties of hostilities"|t }}</span><meta itemprop="position" content="2"></a></span><span class="arrow">›</span></li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ path('entity.node.canonical', {'node': 43}) }}"><span itemprop="item"><span itemprop="name">{{ "Casualties of hostilities"|t }}</span><meta itemprop="position" content="2"></a></span><span class="arrow">›</span></li>
         {% endif %}
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ url('<current>') }}"><span itemprop="name">{{ label }} {{ 'Z"L'|t }}</span><meta itemprop="position" content="3" /></a></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ url('<current>') }}"><span itemprop="name">{{ node.field_rank.value }} {{ node.field_first_name.value }} {{ label }} {{ 'Z"L'|t }}</span><meta itemprop="position" content="3" /></a></li>
     {% else %}
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ url('<current>') }}"><span itemprop="name">{{ label }}</span><meta itemprop="position" content="2" /></a></li>
     {% endif %}

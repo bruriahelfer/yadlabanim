@@ -1,0 +1,12 @@
+name: 'Comment Admin Pages'
+type: 'module'
+description: 'Shows comment edit and delete as admin pages.'
+core_version_requirement: ^8.8 || ^9 || ^10 || ^11
+package: 'Comment'
+dependencies:
+  - drupal:comment
+
+# Information added by Drupal.org packaging script on 2024-09-13
+version: '1.0.2'
+project: 'comment_admin_pages'
+datestamp: 1726238087

@@ -37,6 +37,10 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
             'phootwork\\lang\\' => 15,
             'phootwork\\collection\\' => 21,
         ),
+        'l' => 
+        array (
+            'lsolesen\\pel\\' => 13,
+        ),
         'e' => 
         array (
             'enshrined\\svgSanitize\\' => 22,
@@ -114,6 +118,11 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
             'Grasmash\\YamlCli\\' => 17,
             'Grasmash\\Expander\\' => 18,
         ),
+        'F' => 
+        array (
+            'FontLib\\' => 8,
+            'FileEye\\MimeMap\\' => 16,
+        ),
         'E' => 
         array (
             'Egulias\\EmailValidator\\' => 23,
@@ -121,6 +130,7 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
         'D' => 
         array (
             'Drush\\' => 6,
+            'Drupal\\sophron\\' => 15,
             'Drupal\\Core\\' => 12,
             'Drupal\\Composer\\Plugin\\Scaffold\\' => 32,
             'Drupal\\Composer\\Plugin\\ProjectMessage\\' => 38,
@@ -163,6 +173,10 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
         'phootwork\\collection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phootwork/collection',
+        ),
+        'lsolesen\\pel\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fileeye/pel/src',
         ),
         'enshrined\\svgSanitize\\' => 
         array (
@@ -377,6 +391,14 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
         array (
             0 => __DIR__ . '/..' . '/grasmash/expander/src',
         ),
+        'FontLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dompdf/php-font-lib/src/FontLib',
+        ),
+        'FileEye\\MimeMap\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fileeye/mimemap/src',
+        ),
         'Egulias\\EmailValidator\\' => 
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
@@ -384,6 +406,10 @@ class ComposerStaticInit58e27df2a6a08c7d937da189fcef81c2
         'Drush\\' => 
         array (
             0 => __DIR__ . '/..' . '/drush/drush/src',
+        ),
+        'Drupal\\sophron\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/web/modules/contrib/sophron/src',
         ),
         'Drupal\\Core\\' => 
         array (

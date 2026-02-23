@@ -94,7 +94,7 @@ $("textarea").blur(function(){
 });
 
 $("select").each(function(){
-  if ($(this).find("option:selected").attr('value')!=""){
+  if (($(this).find("option:selected").attr('value')!="") && $(this).find("option:selected").attr('value')!="All"){
     $(this).parent().addClass("input-full")
   } else {
     $(this).parent().removeClass("input-full")
@@ -102,7 +102,7 @@ $("select").each(function(){
 });
 
 $('select').change(function(){
-  if ($(this).find("option:selected").attr('value')!=""){
+  if (($(this).find("option:selected").attr('value')!="") && $(this).find("option:selected").attr('value')!="All"){
     $(this).parent().addClass("input-full");
   } else {
     $(this).parent().removeClass("input-full");

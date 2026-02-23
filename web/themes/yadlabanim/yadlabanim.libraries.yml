@@ -4,7 +4,7 @@ base:
       stylesheets/yadlabanim.css: {}
       js/splide/splide.min.css: {}
       //fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap: { type: external }
-      //fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&display=swap: { type: external }
+      //fonts.googleapis.com/css2?family=Karantina:wght@200;300;400;700&display=swap: { type: external }
 
   js:
     js/splide/splide.min.js: {}

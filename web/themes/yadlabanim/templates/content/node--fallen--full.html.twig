@@ -10,12 +10,12 @@
           </div>
           <div class="type">
             {% if content.field_type['#items'].value == "idf" %}
-              <a href="">{{ "Israel Systems"|t }}</a>
+              <a href="{{ path('entity.node.canonical', {'node': 42}) }}">{{ "Israel Systems"|t }}</a>
             {% else %}
-              <a href="">{{ "Hostilities"|t }}</a>
+              <a href="{{ path('entity.node.canonical', {'node': 43}) }}">{{ "Hostilities"|t }}</a>
             {% endif %}
           </div>
-          <div class="title-wrapper"><h1 class="page-title">{{ node.field_rank.value }} {{ node.label }}</h1><span>{{ 'Z"L'|t }}</span></div>
+          <div class="title-wrapper"><h1 class="page-title">{{ node.field_rank.value }} {{ node.field_first_name.value }} {{ node.label }}</h1><span>{{ 'Z"L'|t }}</span></div>
           <div class="teaser">
             {% if content.field_date_english|render %}
               <div class="dates">{{ "Date of death"|t }} {% if content.field_date_hebrew|render %}{{ node.field_date_hebrew.value }}{% else %}{{ hebrew_date }}{% endif %} - {{ content.field_date_english['#items'].value|date('U')|format_date('shor') }}</div>   
@@ -43,6 +43,9 @@
             {% endif %}
             <li><a class="toscroll" href="#resting-place">{{ "His resting place"|t }}</a></li>  
             <li><a class="toscroll" href="#dedication">{{ "Dedication"|t }}</a></li>  
+            {% if drupal_view_result("comment","block_2")|length > 0 %}
+              <li><a class="toscroll" href="#shared-memory">{{ "Shared memory"|t }}</a></li>  
+            {% endif %}
           </ul>
         </div>
         <div class="content-tabs">
@@ -98,7 +101,9 @@
                   {{ content.field_grave }}
                 </div>
                 <div class="TNCBE">{{ "T.N.C.B.E."|t }}</div>
-                <div class="navigate"><a href="https://www.google.com/maps/place/{{ node.field_cemetery.0.entity.field_address.value }}">{{ "Navigate to the cemetery address >"|t }}</a></div>
+                {% if node.field_cemetery.0.entity.field_address.value is not empty %}
+                  <div class="navigate"><a href="https://www.google.com/maps/place/{{ node.field_cemetery.0.entity.field_address.value }}">{{ "Navigate to the cemetery address >"|t }}</a></div>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -110,6 +115,14 @@
               </div>
             </div>
           </div>
+          {% if drupal_view_result("comment","block_2")|length > 0 %}
+            <div id="shared-memory" class="content-tab">
+              <div class="field">
+                <div class="field__label">{{ "Shared memory"|t }}</div>
+                {{ drupal_view("comment","block_2") }}
+              </div>
+            </div>
+          {% endif %}
         </div>
       </div></div>
       <footer>

@@ -151,12 +151,13 @@ header{
           @media (max-height: 770px) {
             margin-bottom: 8px;
           }
-          > span{
+          > span, > .field--name-field-subtitle{
             cursor: pointer;
           }
           a{
             color: #fff;
           }
+
           .field--name-field-subtitle{
             font-size: 0.85em;
             font-weight: 300;

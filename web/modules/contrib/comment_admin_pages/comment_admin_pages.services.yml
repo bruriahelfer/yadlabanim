@@ -1,0 +1,6 @@
+services:
+  comment_admin_pages.route_subscriber:
+    class: Drupal\comment_admin_pages\Routing\RouteSubscriber
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: event_subscriber }

@@ -47,7 +47,7 @@ class BetterExposedFiltersTestBase extends WebDriverTestBase {
       'field_bef_email' => '1bef-test@drupal.org',
       'field_bef_integer' => '1',
       'field_bef_price' => '10',
-      'field_bef_letters' => 'Aardvark',
+      'field_bef_letters' => 'a',
       // Seattle.
       'field_bef_location' => '10',
       'type' => 'bef_test',
@@ -58,7 +58,7 @@ class BetterExposedFiltersTestBase extends WebDriverTestBase {
       'field_bef_email' => '2bef-test2@drupal.org',
       'field_bef_integer' => '2',
       'field_bef_price' => '75',
-      'field_bef_letters' => 'Bumble & the Bee',
+      'field_bef_letters' => 'b',
       // Vancouver.
       'field_bef_location' => '15',
       'type' => 'bef_test',

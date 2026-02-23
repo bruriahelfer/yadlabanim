@@ -1,0 +1,42 @@
+{% set file_url = output|render|striptags|trim %}
+{% set extension = file_url|split('.')|last|lower %}
+{% set uri = 'public://' ~ file_url|replace({'/sites/default/files/': ''}) %}
+{% if extension in ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'] %}
+    <div class="image">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-open">
+              <img src="{{ uri|image_style('memory_260x150') }}" alt="" />
+            </div>
+            <div class="lightbox simple"><div class="wrapper">
+                <div class="close"><img src="/themes/yadlabanim/images/close-popup.png"></div>
+                <img src="{{ file_url }}" alt="" />
+            </div></div>
+        </div>
+    </div>
+{% elseif extension in ['mp4', 'webm', 'ogg'] %}
+    <div class="video">
+        <div class="lightbox-wrapper">
+            <div class="lightbox-open">
+            <video width="260" height="150">
+              <source src="{{ file_url }}" type="video/mp4">
+            </video>
+            </div>
+            <div class="lightbox simple"><div class="wrapper">
+                <div class="close"><img src="/themes/yadlabanim/images/close-popup.png"></div>
+                <video src="{{ file_url }}" autoplay muted loop playsinline></video>
+            </div></div>
+        </div>
+    </div>
+{% elseif extension in ['pdf'] %}
+  {% set pdf_filename = file_url|split('/')|last %}
+  {% set thumbnail = '/sites/default/files/pdfpreview/' ~ pdf_filename ~ '.png' %}
+  <img src="{{ thumbnail }}" alt="PDF preview" />
+{% elseif extension in ['mp3'] %}
+    <div class="audio">
+        <div class="wrapper">
+            <audio controls>
+                <source src="{{ file_url }}" type="audio/{{ extension == 'mp3' ? 'mpeg' : extension }}">
+            </audio>
+        </div>
+    </div>
+{% endif %}

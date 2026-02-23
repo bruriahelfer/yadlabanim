@@ -1,0 +1,11 @@
+name: 'Comment Admin Pages Test'
+type: module
+description: 'Support module for Comment Admin Pages testing.'
+package: Testing
+dependencies:
+  - comment_admin_pages:comment_admin_pages
+
+# Information added by Drupal.org packaging script on 2024-09-13
+version: '1.0.2'
+project: 'comment_admin_pages'
+datestamp: 1726238087

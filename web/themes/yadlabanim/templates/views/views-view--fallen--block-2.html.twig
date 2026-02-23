@@ -1,0 +1,82 @@
+{%
+  set classes = [
+    'view',
+    'view-' ~ id|clean_class,
+    'view-id-' ~ id,
+    'view-display-id-' ~ display_id,
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+    'grid-5',
+  ]
+%}
+<div{{ attributes.addClass(classes) }}>
+  {{ title_prefix }}
+  {% if title %}
+    {{ title }}
+  {% endif %}
+  {{ title_suffix }}
+  {% if header %}
+    <div class="view-header">
+      {{ header }}
+    </div>
+  {% endif %}
+  {% if exposed %}
+    <div class="view-filters">
+      {{ exposed }}
+    </div>
+  {% endif %}
+
+  <div class="title-wrapper">
+    <div class="texts">
+      <h2>{{ "The Day of Remembrance for Their Fallen"|t }}</h2>
+      <div class="field--name-field-link">{{ "Month of"|t }} {{ hebrew_month }}</div>
+    </div>
+    <div class="list-gallery">
+      <div class="grid-5 active">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.5 11.6664H11.666V17.5004H17.5V11.6664Z" stroke="#473F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.33401 11.6664H2.5V17.5004H8.33401V11.6664Z" stroke="#473F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.5 2.49988H11.666V8.33389H17.5V2.49988Z" stroke="#473F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.33401 2.50012H2.5V8.33413H8.33401V2.50012Z" stroke="#473F52" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="text">{{ "Gallery"|t }}</div>
+      </div>
+      <div class="list">
+        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.13867 13.8132H16.1149" stroke="#473F52" stroke-width="2.11274" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.30176 13.8132H2.31097" stroke="#473F52" stroke-width="2.11274" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.13867 9.20886H16.1149" stroke="#473F52" stroke-width="2.11274" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.30176 9.20886H2.31097" stroke="#473F52" stroke-width="2.11274" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.13867 4.60449H16.1149" stroke="#473F52" stroke-width="2.11274" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.30176 4.60449H2.31097" stroke="#473F52" stroke-width="2.11274" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="text">{{ "List"|t }}</div>
+      </div>    
+    </div>
+  </div>
+
+  {% if attachment_before %}
+    <div class="attachment attachment-before">
+      {{ attachment_before }}
+    </div>
+  {% endif %}
+
+  {% if rows %}
+      <div class="view-content">
+        {{ rows }}
+      </div>
+  {% elseif empty %}
+    <div class="view-empty">
+      {{ empty }}
+    </div>
+  {% endif %}
+
+  {% if pager %}
+    {{ pager }}
+  {% endif %}
+  {% if attachment_after %}
+    <div class="attachment attachment-after">
+      {{ attachment_after }}
+    </div>
+  {% endif %}
+  {% if more %}
+    {{ more }}
+  {% endif %}
+  {% if footer %}
+    <div class="view-footer">
+      {{ footer }}
+    </div>
+  {% endif %}
+  {% if feed_icons %}
+    <div class="feed-icons">
+      {{ feed_icons }}
+    </div>
+  {% endif %}
+</div>

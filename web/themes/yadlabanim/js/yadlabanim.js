@@ -7,12 +7,100 @@
       $(document).ready(function() {
 
 
+        // list - gallery
+        // Load saved preference on page load
+        var savedView = localStorage.getItem('galleryView');
+        if (savedView) {
+          $(".list-gallery .active").removeClass('active');
+          $(".list-gallery ." + savedView).addClass('active');
+          $(".list-gallery .gallery").addClass('active');
+          $(".view").removeClass('grid-5').removeClass('list').addClass(savedView);
+        }
+
+        $(".list-gallery > div").unbind('click').bind('click', function (e) {
+          if (!$(this).hasClass('active')) {
+            var clicked = $(this).attr('class');
+            $(".list-gallery .active").removeClass('active');
+            $(this).addClass('active');
+            $(".list-gallery .gallery").addClass('active');
+            $(".view").removeClass('grid-5').removeClass('list').addClass(clicked);
+
+            // Save preference
+            localStorage.setItem('galleryView', clicked);
+          }
+        });
+        $(".view-content").css('opacity', '1');
+
+        // load more
+
+      once('auto-load-more', '.view-fallen', context).forEach(function (view) {
+        var isLoading = false;
+
+        function checkPagerVisibility() {
+          var $pager = $(view).find('.pager--load-more .pager__item a');
+
+          if ($pager.length === 0 || isLoading) return;
+
+          var pagerTop = $pager[0].getBoundingClientRect().top;
+          var windowHeight = window.innerHeight;
+
+          if (pagerTop <= windowHeight) {
+            isLoading = true;
+
+            // Mark all current rows BEFORE clicking load more
+            $('.view-fallen .views-row').attr('data-loaded', 'true');
+
+            $pager[0].click();
+
+            $(document).one('ajaxComplete', function () {
+              isLoading = false;
+
+              // Now find rows WITHOUT the marker = new rows
+              var $newRows = $('.view-fallen .views-row:not([data-loaded])');
+
+              $newRows.css({ opacity: 0, transform: 'translateY(40px)' });
+
+              $newRows.each(function (index) {
+                var $row = $(this);
+                setTimeout(function () {
+                  $row.css({
+                    transition: 'opacity 0.5s ease, transform 0.5s ease',
+                    opacity: 1,
+                    transform: 'translateY(0)',
+                  });
+                  $row.attr('data-loaded', 'true');
+                }, index * 80);
+              });
+
+              setTimeout(checkPagerVisibility, 300);
+            });
+          }
+        }
+
+        $(window).on('scroll.autoLoadMore', checkPagerVisibility);
+        setTimeout(checkPagerVisibility, 500);
+      });
+
+
+        // filters - search page
+
+        $(".filter-icon").unbind('click').bind('click', function (e) {
+          if ($(this).closest("form").find(".filters-wrapper").hasClass('hide')) {
+            $(this).closest("form").find(".filters-wrapper").removeClass('hide');
+          } else {
+            $(this).closest("form").find(".filters-wrapper").addClass('hide');
+          }
+        });
+
+        $(".search-icon").unbind('click').bind('click', function (e) {
+          $(this).closest("form").find("[id^=edit-submit]").click();
+        });
+
         // main menu
 
         $("#block-yadlabanim-mainmenu .menu-level-0 > li.menu-item--expanded").unbind('click').bind('click', function (e) {
           if ($(this).hasClass('open-sub-menu')) {
-            $("body").removeClass('sub-menu-open');
-            $(this).removeClass('open-sub-menu');
+
           } else {
             if ($("body").hasClass('sub-menu-open')){
               $("#block-yadlabanim-mainmenu .menu-level-0 > li.open-sub-menu").addClass('to-be-removed');
@@ -66,7 +154,7 @@
           updateImageTitlesWidth();
         });
 
-        if ($("body").hasClass('page-node-fallen')) {
+        if ($(".open-close-arrow").length > 0) {
 
           // fallen menu
 
@@ -86,8 +174,9 @@
               $(".open-sub-menu").removeClass('open-sub-menu');
             }
           });
-
+        }
           // file field
+        if ($("body").hasClass('page-node-fallen')) {
 
           function updateFileFieldState() {
             $('.js-form-type-managed-file').each(function () {
@@ -106,59 +195,69 @@
             $('.region-wrapper').closest('.lightbox').addClass('show');
             $("body").addClass('lightbox-show');
           }
-          // description with ul and counter
+          // description with ul and counter of dedic comment
 
-          $('textarea').each(function() {
-            var $textarea = $(this);
-            var $description = $textarea.closest('.form-item').find('.description');
-            var $ul = $description.find('ul');
-            var $counter = $description.find('.counter');
-            var $number = $counter.find('.number');
-            var maxLength = 400;
+          var $textarea = $(".js-form-item-field-dedic-0-value textarea");
+          var $description = $textarea.closest('.form-item').find('.description');
+          var $ul = $description.find('ul');
+          var $counter = $description.find('.counter');
+          var $number = $counter.find('.number');
+          var maxLength = 400;
+          if ($ul.length === 0) {
+            return;
+          }
 
-            if ($ul.length === 0) {
-              return;
+          function updateCounter() {
+            var length = $textarea.val().length;
+            if (length > maxLength) {
+              $textarea.val($textarea.val().substring(0, maxLength));
+              length = maxLength;
             }
+            $number.text(length);
+          }
 
-            function updateCounter() {
-              var length = $textarea.val().length;
-
-              // Optional: limit to max 150 characters
-              if (length > maxLength) {
-                $textarea.val($textarea.val().substring(0, maxLength));
-                length = maxLength;
-              }
-
-              $number.text(length);
-            }
-
-            // On typing
-            $textarea.on('input', function() {
-              var value = $(this).val().trim();
-
-              // Show / hide suggestions
-              if (value.length > 0) {
-                $ul.css("opacity", "0");
-              } else {
-                $ul.css("opacity", "1");
-              }
-
-              updateCounter();
-            });
-
-            // Click suggestion
-            $ul.find('li').on('click', function() {
-              var text = $(this).text();
-              $textarea.val(text);
+          $textarea.on('input', function() {
+            var value = $(this).val().trim();
+            if (value.length > 0) {
               $ul.css("opacity", "0");
-              $textarea.focus();
-              updateCounter(); // Update counter after inserting text
-            });
-
-            // Initialize counter on page load
+            } else {
+              $ul.css("opacity", "1");
+            }
             updateCounter();
           });
 
+            // Click suggestion
+          $ul.find('li').on('click', function() {
+            var text = $(this).text();
+            $textarea.val(text);
+            $ul.css("opacity", "0");
+            $textarea.focus();
+            updateCounter(); // Update counter after inserting text
+          });
+
+            // Initialize counter on page load
+          updateCounter();
+
+
+          var $textareaMemo = $(".js-form-item-field-file-description-0-value textarea");
+          var $descriptionMemo = $textareaMemo.closest('.form-item').find('.description');
+          var $counterMemo = $descriptionMemo.find('.counter');
+          var $numberMemo = $counterMemo.find('.number');
+          var maxLengthMemo = 300;
+
+          function updateCounterMemo() {
+            var length = $textareaMemo.val().length;
+            if (length > maxLengthMemo) {
+              $textareaMemo.val($textareaMemo.val().substring(0, maxLengthMemo));
+              length = maxLengthMemo;
+            }
+            $numberMemo.text(length);
+          }
+
+          $textareaMemo.on('input', function() {
+            var value = $(this).val().trim();
+            updateCounterMemo();
+          });
 
           // lightbox
 

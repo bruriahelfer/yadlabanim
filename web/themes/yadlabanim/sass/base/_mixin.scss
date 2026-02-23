@@ -11,7 +11,7 @@
   }
 }
 
-@mixin  width-right(){
+@mixin width-right(){
   padding-right: calc(50% - 792px);
   box-sizing: border-box;
   @media (max-width: 1872px) {

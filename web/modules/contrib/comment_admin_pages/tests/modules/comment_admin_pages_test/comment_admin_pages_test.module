@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * Module for comment_admin_pages testing.
+ */
+
+/**
+ * Implements hook_page_top().
+ */
+function comment_admin_pages_test_page_top() {
+  \Drupal::state()->set('comment_admin_pages_test.active_theme', \Drupal::service('theme.manager')->getActiveTheme()->getName());
+}

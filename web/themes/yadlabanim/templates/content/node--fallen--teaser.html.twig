@@ -1,7 +1,7 @@
 <article class="fallen-teaser-node">
   <div{{ content_attributes }}>
-    <a href="{{ url }}">
-      <div class="image">
+    <div class="image">
+      <a href="{{ url }}">
         {% if content.field_thumbnail|render %}
           {{ content.field_thumbnail }}
         {% elseif content.field_main_image|render %}
@@ -9,8 +9,10 @@
         {% else %}
           <div class="field-image"><img src="/themes/yadlabanim/images/default-image-520x400.png" alt="yad labanim logo" /></div>
         {% endif %}
-      </div>
-      <h2>{{ node.field_rank.value }} {{ label }} {{"Z\"L"|t }}</h2>
+      </a>
+    </div>
+    <div class="info">
+      <h2><a href="{{ url }}">{{ node.field_rank.value }} {{ node.field_first_name.value }} {{ label }} {{"Z\"L"|t }}</a></h2>
       <div class="teaser">
             {% if content.field_date_english|render %}
               <div class="dates">
@@ -21,10 +23,10 @@
               <div class="dates">{{ "Date of death"|t }} {{ node.field_date_hebrew.value }}</div>
             {% endif %}
       </div>
-    </a>
-    <div class="read-flag">
+      <div class="read-flag">
         {{ content.flag_candle }}
         <div class="read-more"><a href="{{ url }}">{{ "To the personal page"|t }}</a></div>
+      </div>
     </div>
   </div>
 </article>

@@ -75,19 +75,22 @@ class BetterExposedFiltersConfigUpdater {
           $exposed_form = $display['display_options']['exposed_form'];
 
           $bef_settings = $exposed_form['options']['bef'];
-          foreach ($bef_settings["filter"] as $filter_id => $settings) {
-            if (!in_array($settings['plugin_id'], ['bef_links', 'bef'])) {
-              // "soft_limit" is only supported for links and checkboxes/radios.
-              continue;
+          if (isset($bef_settings['filter'])) {
+            foreach ($bef_settings['filter'] as $filter_id => $settings) {
+              if (!in_array($settings['plugin_id'], ['bef_links', 'bef'])) {
+                // "soft_limit" is only supported for links and
+                // checkboxes/radios.
+                continue;
+              }
+              if (isset($settings['soft_limit'])) {
+                // "soft_limit" option already configured.
+                continue;
+              }
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['soft_limit'] = 0;
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['soft_limit_label_less'] = $this->t('Show less');
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['soft_limit_label_more'] = $this->t('Show more');
+              $changed = TRUE;
             }
-            if (isset($settings['soft_limit'])) {
-              // "soft_limit" option already configured.
-              continue;
-            }
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['soft_limit'] = 0;
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['soft_limit_label_less'] = $this->t('Show less');
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['soft_limit_label_more'] = $this->t('Show more');
-            $changed = TRUE;
           }
         }
       }
@@ -117,15 +120,17 @@ class BetterExposedFiltersConfigUpdater {
           $exposed_form = $display['display_options']['exposed_form'];
 
           $bef_settings = $exposed_form['options']['bef'];
-          foreach ($bef_settings["filter"] as $filter_id => $settings) {
-            if ($settings['plugin_id'] != 'bef_single') {
-              continue;
+          if (isset($bef_settings['filter'])) {
+            foreach ($bef_settings['filter'] as $filter_id => $settings) {
+              if ($settings['plugin_id'] != 'bef_single') {
+                continue;
+              }
+              if (isset($settings['treat_as_false'])) {
+                continue;
+              }
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['treat_as_false'] = FALSE;
+              $changed = TRUE;
             }
-            if (isset($settings['treat_as_false'])) {
-              continue;
-            }
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['treat_as_false'] = FALSE;
-            $changed = TRUE;
           }
         }
       }
@@ -155,12 +160,14 @@ class BetterExposedFiltersConfigUpdater {
           $exposed_form = $display['display_options']['exposed_form'];
 
           $bef_settings = $exposed_form['options']['bef'];
-          foreach ($bef_settings["filter"] as $filter_id => $settings) {
-            if (isset($settings['advanced']['open_by_default'])) {
-              continue;
+          if (isset($bef_settings['filter'])) {
+            foreach ($bef_settings['filter'] as $filter_id => $settings) {
+              if (isset($settings['advanced']['open_by_default'])) {
+                continue;
+              }
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['advanced']['open_by_default'] = FALSE;
+              $changed = TRUE;
             }
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['advanced']['open_by_default'] = FALSE;
-            $changed = TRUE;
           }
         }
       }
@@ -190,12 +197,14 @@ class BetterExposedFiltersConfigUpdater {
           $exposed_form = $display['display_options']['exposed_form'];
 
           $bef_settings = $exposed_form['options']['bef'];
-          foreach ($bef_settings["filter"] as $filter_id => $settings) {
-            if (isset($settings['advanced']['field_classes'])) {
-              continue;
+          if (isset($bef_settings['filter'])) {
+            foreach ($bef_settings['filter'] as $filter_id => $settings) {
+              if (isset($settings['advanced']['field_classes'])) {
+                continue;
+              }
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['advanced']['field_classes'] = '';
+              $changed = TRUE;
             }
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['advanced']['field_classes'] = '';
-            $changed = TRUE;
           }
         }
       }
@@ -225,17 +234,19 @@ class BetterExposedFiltersConfigUpdater {
           $exposed_form = $display['display_options']['exposed_form'];
 
           $bef_settings = $exposed_form['options']['bef'];
-          foreach ($bef_settings["filter"] as $filter_id => $settings) {
-            if ($settings['plugin_id'] != 'bef_sliders') {
-              continue;
+          if (isset($bef_settings['filter'])) {
+            foreach ($bef_settings['filter'] as $filter_id => $settings) {
+              if ($settings['plugin_id'] != 'bef_sliders') {
+                continue;
+              }
+              if (isset($settings['enable_tooltips'])) {
+                continue;
+              }
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['enable_tooltips'] = FALSE;
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['tooltips_value_prefix'] = '';
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['tooltips_value_suffix'] = '';
+              $changed = TRUE;
             }
-            if (isset($settings['enable_tooltips'])) {
-              continue;
-            }
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['enable_tooltips'] = FALSE;
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['tooltips_value_prefix'] = '';
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['tooltips_value_suffix'] = '';
-            $changed = TRUE;
           }
         }
       }
@@ -333,14 +344,16 @@ class BetterExposedFiltersConfigUpdater {
           $exposed_form = $display['display_options']['exposed_form'];
 
           $bef_settings = $exposed_form['options']['bef'];
-          foreach ($bef_settings["filter"] as $filter_id => $settings) {
-            if (isset($settings['advanced']['sort_options_method'])) {
-              // "sort_options_method" option already configured.
-              continue;
+          if (isset($bef_settings['filter'])) {
+            foreach ($bef_settings['filter'] as $filter_id => $settings) {
+              if (isset($settings['advanced']['sort_options_method'])) {
+                // "sort_options_method" option already configured.
+                continue;
+              }
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['advanced']['sort_options_method'] = 'alphabetical_asc';
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['advanced']['sort_options_natural'] = TRUE;
+              $changed = TRUE;
             }
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['advanced']['sort_options_method'] = 'alphabetical_asc';
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['advanced']['sort_options_natural'] = TRUE;
-            $changed = TRUE;
           }
         }
       }
@@ -370,15 +383,17 @@ class BetterExposedFiltersConfigUpdater {
           $exposed_form = $display['display_options']['exposed_form'];
 
           $bef_settings = $exposed_form['options']['bef'];
-          foreach ($bef_settings["filter"] as $filter_id => $settings) {
-            if ($settings['plugin_id'] != 'bef_sliders') {
-              continue;
+          if (isset($bef_settings['filter'])) {
+            foreach ($bef_settings['filter'] as $filter_id => $settings) {
+              if ($settings['plugin_id'] != 'bef_sliders') {
+                continue;
+              }
+              if (isset($settings['placement_location'])) {
+                continue;
+              }
+              $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['placement_location'] = 'end';
+              $changed = TRUE;
             }
-            if (isset($settings['placement_location'])) {
-              continue;
-            }
-            $display['display_options']['exposed_form']['options']['bef']['filter'][$filter_id]['placement_location'] = 'end';
-            $changed = TRUE;
           }
         }
       }

@@ -1,5 +1,5 @@
-<div class="layout-container">
-  <header role="banner" class="{% if content_type == "fallen" %}close-side-menu{% endif %}">
+<div class="layout-container{% if content_type == "fallen" or node.field_close_menu.value == "1" %} menu-side-narrow{% endif %}">
+  <header role="banner" class="{% if content_type == "fallen" or node.field_close_menu.value == "1" %}close-side-menu{% endif %}">
     <div class="top-bar only-mobile"> 
       <div id="menu-toggle">
           <div id="hamburger">
@@ -18,7 +18,7 @@
         </a>
       </div>
     </div>
-    {% if content_type == "fallen" %}
+    {% if content_type == "fallen" or node.field_close_menu.value == "1" %}
       <div class="open-close-arrow">
         <img class="open-icon" src="/themes/yadlabanim/images/left-arrow.svg" alt="Open Menu">
         <img class="close-icon hide" src="/themes/yadlabanim/images/right-arrow.svg" alt="Close Menu">
