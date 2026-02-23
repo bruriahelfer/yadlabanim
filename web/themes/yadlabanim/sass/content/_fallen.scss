@@ -485,6 +485,13 @@
                                 }
                             }
                             .views-field-field-file{
+                                .pdfpreview-image-wrapper{
+                                    .file{
+                                        display: none;
+                                    }
+                                }
+                            }
+                            .views-field-field-file{
                                 .lightbox-wrapper{
                                     position: relative;
                                     .lightbox-open{
