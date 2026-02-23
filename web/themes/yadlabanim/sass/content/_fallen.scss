@@ -484,10 +484,13 @@
                                     justify-content: space-between;
                                 }
                             }
-                            .views-field-field-file{
+                            .views-field-field-file-1{
                                 .pdfpreview-image-wrapper{
                                     .file{
                                         display: none;
+                                        + span{
+                                            display: none;
+                                        }
                                     }
                                 }
                             }
