@@ -28,9 +28,6 @@
         </div>
     </div>
 {% elseif extension in ['pdf'] %}
-    {% set pdf_filename = file_url|split('/')|last|replace({'.pdf': '', '.PDF': ''}) %}
-    {% set thumbnail = '/sites/default/files/pdfpreview/' ~ pdf_filename ~ '.png' %}
-    <img src="{{ thumbnail }}" alt="PDF preview" />
 {% elseif extension in ['mp3'] %}
     <div class="audio">
         <div class="wrapper">
