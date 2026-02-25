@@ -600,16 +600,29 @@
                                             position: relative;
                                             &:after{
                                                 content: "";
-                                                background: url(/themes/yadlabanim/images/video-play.svg) no-repeat center;
-                                                width: 40px;
-                                                height: 40px;
-                                                background-size: 100%;
+                                                background: url(/themes/yadlabanim/images/song.svg) no-repeat center;
+                                                width: 32px;
+                                                height: 32px;
                                                 position: absolute;
-                                                top: calc(50% - 20px);
-                                                right: calc(50% - 20px);
+                                                top: calc(50% - 16px);
+                                                right: calc(50% - 16px);
                                             }
                                             audio{
                                                 width: 100%;
+                                                opacity: 0;
+                                            }
+                                            &.playing{
+                                                &:after{
+                                                    background: url(/themes/yadlabanim/images/pause.svg) no-repeat center;
+                                                }
+                                                audio{
+                                                    opacity: 1;
+                                                }
+                                            }
+                                            &.paused{
+                                                &:after{
+                                                    background: url(/themes/yadlabanim/images/song.svg) no-repeat center;
+                                                }
                                             }
                                         }
                                     }

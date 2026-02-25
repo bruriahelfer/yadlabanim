@@ -178,6 +178,25 @@
           // file field
         if ($("body").hasClass('page-node-fallen')) {
 
+          $('#shared-memory .audio .wrapper').on('click', function() {
+              const audio = $(this).find('audio')[0];              
+              if (audio.paused) {
+                  audio.play();
+                  $(this).addClass('playing').addClass('paused');
+              } else {
+                  audio.pause();
+                  $(this).removeClass('paused');
+              }
+          });
+
+          $('#shared-memory .audio .wrapper audio').on('pause', function() {
+              $(this).closest('.wrapper').addClass('paused');
+          });
+
+          $('#shared-memory .audio .wrapper audio').on('play', function() {
+              $(this).closest('.wrapper').removeClass('paused');
+          });
+
           function updateFileFieldState() {
             $('.js-form-type-managed-file').each(function () {
               const hasFile = $(this).find('.js-form-managed-file .file').length > 0;
