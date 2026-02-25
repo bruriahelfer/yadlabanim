@@ -529,15 +529,16 @@
                                         }
                                     }
                                 }
-                                .pdfpreview-image-wrapper .file--application-pdf{
+                                .pdfpreview-image-wrapper a{
+                                    display: block;
+                                    position: relative;
                                     &:after{
                                         content: "";
-                                        width: 40px;
-                                        height: 40px;
-                                        background-size: 100%;
+                                        width: 32px;
+                                        height: 32px;
                                         position: absolute;
-                                        top: calc(50% - 20px);
-                                        right: calc(50% - 20px);
+                                        top: calc(50% - 16px);
+                                        right: calc(50% - 16px);
                                         background: url(/themes/yadlabanim/images/book.svg) no-repeat center;
                                     }                                       
                                 }
@@ -548,12 +549,11 @@
                                             cursor: pointer;
                                             &:after{
                                                 content: "";
-                                                width: 40px;
-                                                height: 40px;
-                                                background-size: 100%;
+                                                width: 32px;
+                                                height: 32px;
                                                 position: absolute;
-                                                top: calc(50% - 20px);
-                                                right: calc(50% - 20px);
+                                                top: calc(50% - 16px);
+                                                right: calc(50% - 16px);
                                             }
                                             video{
                                                 width: 100%;
