@@ -450,105 +450,167 @@
                     }
                 }
                 #shared-memory{
-                    .view-content{
-                        display: flex;
-                        flex-wrap: wrap;
-                        .views-row{
-                            width: calc(33.33% - 30px);
-                            margin-left: 30px;
-                            border-radius: 4px;
-                            background: #FFF;
-                            box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.07);
-                            position: relative;
-                            margin-bottom: 50px;
-                            &:nth-child(3n){
-                                margin-left: 0px;
-                            }
-                            .views-field-field-memory-type{
-                                position: absolute;
-                                font-size: 0.6em;
-                                font-weight: 500;
-                                border-radius: 8.461px;
-                                background: #DCD6BD;
-                                padding: 4px 10px;
-                                top: 15px;
-                                right: 15px;
-                                z-index: 10;
-                            }
-                            .views-field-created{
-                                font-size: 0.7em;
-                                font-weight: 200;
-                                padding: 10px 15px 15px;
-                                .field-content{
-                                    display: flex;
-                                    justify-content: space-between;
-                                }
-                            }
-                            .views-field-field-file-1{
-                                .pdfpreview-image-wrapper{
-                                    .file{
-                                        display: none;
-                                        + span{
-                                            display: none;
+                    > .field{
+                        > .field__label{
+                            margin-bottom: 15px;
+                        }
+                        > .description{
+                            font-weight: 300;
+                        }
+                    }
+                    .view{
+                        .view-filters{
+                            margin: 20px 0 30px;
+                            .form-radios{
+                                display: flex;
+                                flex-wrap: wrap;
+                                .js-form-item{
+                                    position: relative;
+                                    label{
+                                        border-radius: 8px;
+                                        border: 1px solid #473F52;
+                                        padding: 10px;
+                                        display: block;
+                                        font-size: 0.8em;
+                                        margin-left: 14px;
+                                        cursor: pointer;
+                                    }
+                                    input{
+                                        position: absolute;
+                                        opacity: 0;
+                                        &:checked + label{
+                                            background: #fff;
                                         }
                                     }
                                 }
                             }
-                            .views-field-field-file{
-                                .lightbox-wrapper{
-                                    position: relative;
-                                    .lightbox-open{
-                                        cursor: pointer;
-                                        &:after{
-                                            content: "";
-                                            background: url(/themes/yadlabanim/images/video-play.svg) no-repeat center;
-                                            width: 40px;
-                                            height: 40px;
-                                            background-size: 100%;
-                                            position: absolute;
-                                            top: calc(50% - 20px);
-                                            right: calc(50% - 20px);
+                        }
+                        .view-content{
+                            display: flex;
+                            flex-wrap: wrap;
+                            .views-row{
+                                width: calc(33.33% - 30px);
+                                margin-left: 30px;
+                                border-radius: 4px;
+                                background: #FFF;
+                                box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.07);
+                                position: relative;
+                                margin-bottom: 50px;
+                                &:nth-child(3n){
+                                    margin-left: 0px;
+                                }
+                                .views-field-field-memory-type{
+                                    position: absolute;
+                                    font-size: 0.6em;
+                                    font-weight: 500;
+                                    border-radius: 8.461px;
+                                    background: #DCD6BD;
+                                    padding: 4px 10px;
+                                    top: 15px;
+                                    right: 15px;
+                                    z-index: 10;
+                                }
+                                .views-field-created{
+                                    font-size: 0.7em;
+                                    font-weight: 200;
+                                    padding: 10px 15px 15px;
+                                    .field-content{
+                                        display: flex;
+                                        justify-content: space-between;
+                                    }
+                                }
+                                .views-field-field-file-1{
+                                    .pdfpreview-image-wrapper{
+                                        .file{
+                                            display: none;
+                                            + span{
+                                                display: none;
+                                            }
                                         }
-                                        video{
+                                    }
+                                }
+                                .pdfpreview-image-wrapper .file--application-pdf{
+                                    &:after{
+                                        content: "";
+                                        width: 40px;
+                                        height: 40px;
+                                        background-size: 100%;
+                                        position: absolute;
+                                        top: calc(50% - 20px);
+                                        right: calc(50% - 20px);
+                                        background: url(/themes/yadlabanim/images/book.svg) no-repeat center;
+                                    }                                       
+                                }
+                                .views-field-field-file{
+                                    .lightbox-wrapper{
+                                        position: relative;
+                                        .lightbox-open{
+                                            cursor: pointer;
+                                            &:after{
+                                                content: "";
+                                                width: 40px;
+                                                height: 40px;
+                                                background-size: 100%;
+                                                position: absolute;
+                                                top: calc(50% - 20px);
+                                                right: calc(50% - 20px);
+                                            }
+                                            video{
+                                                width: 100%;
+                                                aspect-ratio: 260 / 150;
+                                                object-fit: cover;
+                                            }
+                                        }
+                                        .lightbox{
+                                            video{
+                                                max-height: 73vh;
+                                                max-width: 100%;
+                                                object-fit: contain;
+                                            }
+                                        }
+                                    }
+                                    .video{
+                                        .lightbox-wrapper{
+                                            text-align: center;
+                                            .lightbox-open{
+                                                &:after{
+                                                    background: url(/themes/yadlabanim/images/video-play.svg) no-repeat center;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .image{
+                                        .lightbox-wrapper{
+                                            text-align: center;
+                                            .lightbox-open{
+                                                &:after{
+                                                    background: url(/themes/yadlabanim/images/letter.svg) no-repeat center;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    .audio{
+                                        position: relative;
+                                        .wrapper{
                                             width: 100%;
                                             aspect-ratio: 260 / 150;
-                                            object-fit: cover;
-                                        }
-                                    }
-                                    .lightbox{
-                                        video{
-                                            max-height: 73vh;
-                                            max-width: 100%;
-                                            object-fit: contain;
-                                        }
-                                    }
-                                }
-                                .video{
-                                    .wrapper{
-                                        text-align: center;
-                                    }
-                                }
-                                .audio{
-                                    position: relative;
-                                    .wrapper{
-                                        width: 100%;
-                                        aspect-ratio: 260 / 150;
-                                        background: linear-gradient(to bottom, #b5ac90, #dfdcc9);
-                                        display: flex;
-                                        align-items: flex-end;
-                                        position: relative;
-                                        &:after{
-                                            content: "";
-                                            background: url(/themes/yadlabanim/images/video-play.svg) no-repeat center;
-                                            width: 40px;
-                                            height: 40px;
-                                            background-size: 100%;
-                                            position: absolute;
-                                            top: calc(50% - 20px);
-                                            right: calc(50% - 20px);
-                                        }
-                                        audio{
-                                            width: 100%;
+                                            background: linear-gradient(to bottom, #b5ac90, #dfdcc9);
+                                            display: flex;
+                                            align-items: flex-end;
+                                            position: relative;
+                                            &:after{
+                                                content: "";
+                                                background: url(/themes/yadlabanim/images/video-play.svg) no-repeat center;
+                                                width: 40px;
+                                                height: 40px;
+                                                background-size: 100%;
+                                                position: absolute;
+                                                top: calc(50% - 20px);
+                                                right: calc(50% - 20px);
+                                            }
+                                            audio{
+                                                width: 100%;
+                                            }
                                         }
                                     }
                                 }
