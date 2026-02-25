@@ -1,13 +1,12 @@
 {% set file_url = output|render|striptags|trim %}
 {% set extension = file_url|split('.')|last|lower %}
 {% set uri = 'public://' ~ file_url|replace({'/sites/default/files/': ''}) %}
-{{ uri }}
 
 {% if extension in ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'] %}
     <div class="image">
         <div class="lightbox-wrapper">
             <div class="lightbox-open">
-<img src="{{ uri|image_style('thumbnail') }}" alt="" />
+                <img src="{{ uri|image_style('memory_260x150') }}" alt="" />
             </div>
             <div class="lightbox simple"><div class="wrapper">
                 <div class="close"><img src="/themes/yadlabanim/images/close-popup.png"></div>
