@@ -6,7 +6,7 @@
   <ul{{attributes.addClass(['menu', 'menu-level-'~menu_level])}}>
     {% if menu_level == 1 and parent_title %}
       <div class="wrapper">
-        <div class="close-menu"><img src="/themes/yadlabanim/images/close.svg" alt="Close Menu"></div>
+        <div class="close-submenu"><img src="/themes/yadlabanim/images/close.svg" alt="Close Menu"></div>
         <li class="menu-parent-title">{{ parent_title }}</li>
     {% endif %}
     {% for key, item in items %}
@@ -21,19 +21,25 @@
         ] %}
 
         <li{{item.attributes.addClass(menu_item_classes)}}>
-          {% set is_nolink = item.url.getRouteName() == '<nolink>' or (item.url.isExternal() and item.url.toString() == '') %}
-          {% if is_nolink %}
-            <span>{{ item.title }}</span>
-            {{ item.content.field_subtitle }}
-          {% else %}
-            <a href="{{ item.url }}">
-                <div class="title">{{ item.title }}</div>
-                {{ item.content.field_subtitle }}
-            </a>
-          {% endif %}
-          {% if item.below %}
-            {{ menu.menu_links(item.below, attributes.removeClass(['menu', 'menu-level-'~menu_level]), menu_level + 1, item.title) }}
-          {% endif %}
+            {% if item.content.field_class['#items'].value == 'fallen-search' %}
+              {{ drupal_block('views_exposed_filter_block:search-block_4', {label_display: false}) }}
+            {% else %}
+              {% set is_nolink = item.url.getRouteName() == '<nolink>' or (item.url.isExternal() and item.url.toString() == '') %}
+              {% if is_nolink %}
+                <div class="wrapper-li">
+                  <span>{{ item.title }}</span>
+                  {{ item.content.field_subtitle }}
+                </div>
+              {% else %}
+                <a href="{{ item.url }}">
+                    <div class="title">{{ item.title }}</div>
+                    {{ item.content.field_subtitle }}
+                </a>
+              {% endif %}
+              {% if item.below %}
+                {{ menu.menu_links(item.below, attributes.removeClass(['menu', 'menu-level-'~menu_level]), menu_level + 1, item.title) }}
+              {% endif %}
+            {% endif %}
         </li>
       {% endif %}
     {% endfor %}

@@ -26,7 +26,7 @@
   @if $media == xl-xxl {
     @media (min-width: 1025px) and (max-width: 1350px) { @content; }
   }
-  @if $media == width {
-    @media (max-width: 1780px){ @content; }
+  @if $media == big {
+    @media (min-width: 1351px) and (max-width: 1800px) { @content; }
   }
 }

@@ -12,13 +12,22 @@
 }
 
 @mixin width-right(){
-  padding-right: calc(50% - 792px);
+  padding-right: calc(50vw - 885px);
   box-sizing: border-box;
-  @media (max-width: 1872px) {
+  @media (max-width: 1870px) {
     padding-right: 50px;
   }
   @include res(s-m){
     padding-right: 20px;
+  }
+  .menu-side-narrow &{
+    padding-right: calc(50vw - 806px);
+    @media (max-width: 1870px) {
+      padding-right: 50px;
+    }
+    @include res(s-m){
+      padding-right: 20px;
+    }
   }
 }
 

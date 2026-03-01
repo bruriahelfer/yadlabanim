@@ -86,6 +86,9 @@ function yadlabanim_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
   if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-search-block-2') {
     $form['#action'] = '/search';
   }
+  if ($form_id == 'views_exposed_form' && $form['#id'] == 'views-exposed-form-search-block-4') {
+    $form['#action'] = '/search-fallen';
+  }
 }
 
 function yadlabanim_preprocess_node(&$variables) {
@@ -93,6 +96,41 @@ function yadlabanim_preprocess_node(&$variables) {
   if ($node->hasField('field_date_english') && !$node->get('field_date_english')->isEmpty()) {
     $date_value = $node->get('field_date_english')->value;
     $variables['hebrew_date'] = _convert_to_hebrew_date($date_value);
+  }
+  $theme = \Drupal::theme()->getActiveTheme()->getName();
+  
+  $blocks = \Drupal::entityTypeManager()
+    ->getStorage('block')
+    ->loadByProperties([
+      'region' => 'after_title',
+      'theme'  => $theme,
+    ]);
+
+  $build = [];
+  foreach ($blocks as $block) {
+    if ($block->access('view')) {
+      $build[] = \Drupal::entityTypeManager()
+        ->getViewBuilder('block')
+        ->view($block);
+    }
+  }
+  $variables['after_title'] = $build;
+  $menu_link_manager = \Drupal::service('plugin.manager.menu.link');
+  $menu_tree = \Drupal::menuTree();
+  $links = $menu_link_manager->loadLinksByRoute(
+    'entity.node.canonical',
+    ['node' => $node->id()],
+    'main'
+  );
+  if (!empty($links)) {
+    $link = reset($links);
+    if ($link->getParent()) {
+      $parent = $menu_link_manager->createInstance($link->getParent());
+      $variables['breadcrumb_main_parent'] = [
+        'title' => $parent->getTitle(),
+        'url' => $parent->getUrlObject()->toString(),
+      ];
+    }
   }
 }
 

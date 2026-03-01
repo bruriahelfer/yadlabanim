@@ -1,12 +1,16 @@
 {% if content.field_banner|render %}
-    <div class="banner">
-        {{ content.field_banner_mobile}}
-        {{ content.field_banner}}
-        <div class="on-image flex"><div class="width-wrapper">
-            <h1 class="page-title">{{ label }}</h1>
-            <h2 class="subtitle">{{ content.field_sub_title }}</h2>
-        </div></div>
-    </div>
+    {% if content.field_banner_left['#items'].value != "1" %}
+        <div class="banner">
+            {{ content.field_banner_mobile}}
+            {{ content.field_banner}}
+            <div class="on-image flex"><div class="width-wrapper">
+                <h1 class="page-title">{{ label }}</h1>
+                <h2 class="subtitle">{{ content.field_sub_title }}</h2>
+            </div></div>
+        </div>
+    {% else %}
+
+    {% endif %}
 {% else %}
     <div class="breadcrumbs-wrapper width-wrapper">
         {% include '/themes/yadlabanim/templates/content/breadcrumbs.html.twig'  %}
@@ -17,16 +21,40 @@
     </div>
 {% endif %}
 {% if content.field_banner|render and not is_front %}
-    <div class="breadcrumbs-wrapper width-wrapper">
-        {% include '/themes/yadlabanim/templates/content/breadcrumbs.html.twig'  %}
-    </div>
+    {% if content.field_banner_left['#items'].value == "1" %}
+        <div class="left-right-width">
+            <div class="left">
+                {{ content.field_banner_mobile[0]['#media']|view('left_image') }}
+                {{ content.field_banner[0]['#media']|view('left_image') }}
+            </div>
+            <div class="right width-wrapper-right">
+            <div class="breadcrumbs-wrapper">
+                {% include '/themes/yadlabanim/templates/content/breadcrumbs.html.twig'  %}
+            </div>
+            <div class="titles">
+                <h1 class="page-title">{{ label }}</h1>
+                <h2 class="subtitle">{{ content.field_sub_title }}</h2>
+            </div>
+    {% else %}
+        <div class="breadcrumbs-wrapper width-wrapper">
+            {% include '/themes/yadlabanim/templates/content/breadcrumbs.html.twig'  %}
+        </div>
+    {% endif %}
 {% endif %}
+
+{{ after_title }}
+
 <article{{ attributes }}>
   <div{{ content_attributes }}>
-    {{ content|without('field_sub_title', 'field_banner', 'field_bg_color','field_banner_mobile','field_close_menu') }}
+    {{ content.body }}
   </div>
 </article>
-
+{% if content.field_banner|render and not is_front %}
+    {% if content.field_banner_left['#items'].value == "1" %}
+        </div></div>
+    {% endif %}
+{% endif %}
+{{ content.field_paragraphs}}
 {% if content.field_bg_color|render %}
     <style>
     body {

@@ -17,6 +17,7 @@ regions:
   header: Header
   sticky_ruler: Sticky Ruler
   title: Title
+  after_title: After Title
   content_top: Content Top
   content: Content
   content_bottom: Content Bottom

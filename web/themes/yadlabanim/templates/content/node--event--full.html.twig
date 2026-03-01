@@ -1,0 +1,37 @@
+{% if content.field_main_image|render %}    
+  <div class="left-right-width">
+    <div class="left">
+      {{ content.field_main_image }}
+    </div>
+    <div class="right no-padding">
+      <div class="top-area">
+        <div class="width-wrapper-right">
+          <div class="breadcrumbs-wrapper">
+            {% include '/themes/yadlabanim/templates/content/breadcrumbs.html.twig'  %}
+          </div>
+          <h1 class="page-title">{{ label }}</h1>
+          <h2 class="subtitle">{{ content.field_sub_title }}</h2>
+          {{ content.field_event_who }}
+          <div class="date">{{ content.field_event_date['#items'].value|date('U')|format_date('simple') }}</div>
+          <div class="time">{{ content.field_event_date }}</div>
+          {% if node.field_place.0.entity.field_address.value is not empty %}
+            <div class="navigate"><a href="https://www.google.com/maps/place/{{ node.field_place.0.entity.field_address.value }}">{{ node.field_place.0.entity.label }}</a></div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="content">
+        <div class="width-wrapper-right">
+          {{ content.body }}
+        </div>
+    </div>
+  </div>
+{% else %}
+  <div class="events-full-width width-wrapper">
+    <div class="breadcrumbs-wrapper">
+      {% include '/themes/yadlabanim/templates/content/breadcrumbs.html.twig'  %}
+    </div>
+    <div class="titles">
+      <h1 class="page-title">{{ label }}</h1>
+      <h2 class="subtitle">{{ content.field_sub_title }}</h2>
+    </div>
+{% endif %}

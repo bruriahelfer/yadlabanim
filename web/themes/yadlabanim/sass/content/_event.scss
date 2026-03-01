@@ -1,0 +1,12 @@
+.page-node-event{
+    [id^=block]{
+        > h2{
+            font-family: $karantina;
+            font-size: 1.8em;
+            font-weight: 400;
+            @include width-right();
+            margin-bottom: 50px;
+
+        }
+    }
+}

@@ -7,6 +7,7 @@
     dom_id ? 'js-view-dom-id-' ~ dom_id,
   ]
 %}
+
 <div{{ attributes.addClass(classes) }}>
   {{ title_prefix }}
   {% if title %}
@@ -29,21 +30,24 @@
     </div>
   {% endif %}
 
-  {% if rows and not view.exposed_raw_input.combine is empty %}
+  {% if rows and not view.exposed_raw_input.name is empty %}
     <div class="titles no-padding">
-      <h2>{{ "fallens"|t }}</h2>
+      <h2>{{ "Casualties of hostilities"|t }}</h2>
     </div>
-    <div class="splide view-content-search-2">
+    <div class="splide view-content-search-1">
       <div class="splide__track">
         <ul class="splide__list">
           {{ rows }}
         </ul>
       </div>
-      <div class="search-counter-2">
+      <div class="search-counter-1">
         <span class="total">{{ items|length }}</span> / <span class="current">1</span>
       </div>
     </div>
-  {% elseif empty %}
+  {% endif %}
+  {% if view.exposed_raw_input.name is empty %}
+  <p>הזן טקסט בשדה החיפוש כדי לראות תוצאות</p>
+  {% elseif drupal_view_result('search', 'block_3')|length == 0  and drupal_view_result('search', 'block_4')|length == 0 %}
     <div class="view-empty">
       {{ empty }}
     </div>

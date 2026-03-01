@@ -5,6 +5,8 @@
 @import "region/header.scss";
 @import "content/node.scss";
 @import "content/fallen.scss";
+@import "content/page.scss";
+@import "content/event.scss";
 @import "paragraphs/views.scss";
 @import "paragraphs/textimage.scss";
 @import "paragraphs/paragraphs.scss";
@@ -20,6 +22,7 @@ body{
     color: $default;
     line-height: 1.2;
     font-family: $rubik;
+    font-weight: 300;
     font-size: 20px;
     margin: 0;
     background-color: $beige-bg;
@@ -33,7 +36,7 @@ body{
         &.menu-side-narrow{
           padding-right: 100px;
           #block-yadlabanim-content{
-            > .banner .on-image, > article:not(.node--fallen){
+            > .banner .on-image, > article:not(.node--fallen), .field--name-field-paragraphs{
                 @include width-right;
             }
             > .breadcrumbs-wrapper{
@@ -100,7 +103,7 @@ body{
 
 h1, h2, h3, h4, h5, h6{
   margin: 0;
-  font-weight: normal;
+  font-weight: 300;
 }
 
 h1{
@@ -292,9 +295,6 @@ body{
     right: auto;
     margin-top: -5px;
     transition: all 0.5s;
-    @include res(width){
-      left: 236px;
-    }
     @include res(s-m-l){
       display: none!important;
     }
@@ -360,6 +360,7 @@ form{
 .breadcrumbs-wrapper{
   padding-top: 20px;
   padding-bottom: 60px;
+  font-weight: 400;
   ol{
     padding: 0;
     margin: 0;
@@ -370,8 +371,13 @@ form{
     .arrow{
       margin: 0 5px;
     }
+    li{
+      > span{
+        cursor: default;
+      }
+    }
     li:last-child{
-      a{
+      a, span{
         pointer-events: none;
       }
     }

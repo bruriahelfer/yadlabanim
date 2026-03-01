@@ -49,6 +49,7 @@ header{
       }
       .search-button{
         cursor: pointer;
+        font-weight: 400;
         .text{
           background: url(/themes/yadlabanim/images/search.svg) no-repeat left top 13px;
           display: inline-block;
@@ -135,6 +136,7 @@ header{
     .center{
       font-size: 1.9em;
       transition: all 0.5s;
+      font-weight: normal;
       .contextual-region{
         position: initial;
       }
@@ -151,13 +153,13 @@ header{
           @media (max-height: 770px) {
             margin-bottom: 8px;
           }
-          > span, > .field--name-field-subtitle{
+          .wrapper-li{
             cursor: pointer;
+            font-weight: normal;
           }
           a{
             color: #fff;
           }
-
           .field--name-field-subtitle{
             font-size: 0.85em;
             font-weight: 300;
@@ -174,6 +176,7 @@ header{
           &:not(.nizkor){
             @media (max-height: 770px) {
               font-size: 0.9em;
+              font-weight: 400;
             }
           }
           ul{
@@ -190,7 +193,7 @@ header{
               padding: 301px 25px 0 50px;
               width: 278px;
               box-sizing: border-box;
-              .close-menu{
+              .close-submenu{
                 position: absolute;
                 top: 28px;
                 left: 20px;
@@ -206,10 +209,40 @@ header{
               .menu-item{
                 font-family: $rubik;
                 font-size: 0.5em;
-                font-weight: 300;
                 margin-bottom: 25px;
+                font-weight: 300;
                 &:last-child{
                   margin-bottom: 0;
+                }
+              }
+            }
+            .fallen-search{
+              form{
+                position: relative;
+                .js-form-item{
+                  ::placeholder {
+                    opacity: 1;
+                    color: #fff;
+                  }
+                  input{
+                    background-color: transparent;
+                    border: none;
+                    color: #fff;
+                    outline: none;
+                    padding-left: 40px;
+                  }
+                }
+                .form-submit{
+                  position: absolute;
+                  left: 7px;
+                  top: -7px;
+                  background: url(/themes/yadlabanim/images/search.svg) no-repeat center center;
+                  border: none;
+                  text-indent: -9999px;
+                  padding: 0;
+                  width: 40px;
+                  height: 40px;
+                  cursor: pointer;
                 }
               }
             }

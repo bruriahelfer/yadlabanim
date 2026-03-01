@@ -51,6 +51,9 @@
             z-index: 10;
             position: relative;
         }
+        h2{
+            font-weight: normal;
+        }
     }
 }
 
@@ -118,6 +121,7 @@ body.front{
 .field--name-field-paragraphs{
     .paragraph {
         position: relative;
+        padding-bottom: 90px;
         &.has-bg-color{
             padding-top: 70px;
             padding-bottom: 90px;
@@ -140,7 +144,7 @@ body.front{
             align-items: flex-start;
         }
     }
-    .field--name-field-thumbnail{
+    .field--name-field-thumbnail, .field--name-field-main-image{
         margin-bottom: 15px;
         &.no-image{
             img{
@@ -163,7 +167,6 @@ body.front{
         margin-bottom: 10px;
     }
     .teaser{
-        font-weight: 300;
         margin-bottom: 15px;
         p{
             margin: 0;

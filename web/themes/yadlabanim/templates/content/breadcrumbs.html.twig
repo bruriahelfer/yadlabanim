@@ -8,6 +8,21 @@
         {% endif %}
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ url('<current>') }}"><span itemprop="name">{{ node.field_rank.value }} {{ node.field_first_name.value }} {{ label }} {{ 'Z"L'|t }}</span><meta itemprop="position" content="3" /></a></li>
     {% else %}
-        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ url('<current>') }}"><span itemprop="name">{{ label }}</span><meta itemprop="position" content="2" /></a></li>
+        {% if breadcrumb_main_parent is defined %}
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                {% if breadcrumb_main_parent.url is not empty %}
+                    <a itemprop="item" href="{{ breadcrumb_main_parent.url }}">
+                {% endif %}
+                <span itemprop="name">{{ breadcrumb_main_parent.title }}</span>
+                <meta itemprop="position" content="2" />
+                {% if breadcrumb_main_parent.url is not empty %}
+                    </a>
+                {% endif %}
+                <span class="arrow">›</span>
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ url('<current>') }}"><span itemprop="name">{{ label }}</span><meta itemprop="position" content="3" /></a></li>
+        {% else %}
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ url('<current>') }}"><span itemprop="name">{{ label }}</span><meta itemprop="position" content="2" /></a></li>
+        {% endif %}
     {% endif %}
 </ol>
