@@ -24,7 +24,7 @@
             {% endif %}
           {% endif %}
             {% set event_timestamp = content.field_event_date['#items'].value|date('U') %}
-            {% set current_timestamp = "now"|date('U') %}
+            {% set current_timestamp = current_time  %}
             {% set is_future = event_timestamp > current_timestamp %}
             {% if is_future %}
               <div class="lightbox-wrapper register-wrapper">

@@ -163,4 +163,10 @@ function yadlabanim_preprocess_views_view(&$variables) {
   $variables['hebrew_month'] = $hebrew_month;
 }
 
+function yadlabanim_preprocess_views_view_unformatted(&$variables) {
+  $variables['current_time'] = date('Y-m-d\TH:i:s');
+  \Drupal::service('page_cache_kill_switch')->trigger();
+  $variables['#cache']['max-age'] = 0;
+}
+
 ?>
