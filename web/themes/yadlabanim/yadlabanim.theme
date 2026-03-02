@@ -92,6 +92,9 @@ function yadlabanim_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
 }
 
 function yadlabanim_preprocess_node(&$variables) {
+  $variables['current_time'] = date('Y-m-d\TH:i:s');
+
+
   $node = $variables['node'];
   if ($node->hasField('field_date_english') && !$node->get('field_date_english')->isEmpty()) {
     $date_value = $node->get('field_date_english')->value;
@@ -163,10 +166,5 @@ function yadlabanim_preprocess_views_view(&$variables) {
   $variables['hebrew_month'] = $hebrew_month;
 }
 
-function yadlabanim_preprocess_views_view_unformatted(&$variables) {
-  $variables['current_time'] = date('Y-m-d\TH:i:s');
-  \Drupal::service('page_cache_kill_switch')->trigger();
-  $variables['#cache']['max-age'] = 0;
-}
 
 ?>
