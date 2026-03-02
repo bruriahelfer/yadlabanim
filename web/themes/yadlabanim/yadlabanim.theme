@@ -92,25 +92,10 @@ function yadlabanim_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
 }
 
 function yadlabanim_preprocess_node(&$variables) {
-  if ($variables['node']->getType() === 'event') {
-    $field = $variables['node']->get('field_event_date')->value;
-    if ($field) {
-      $event_timestamp = strtotime($field);
-      $now = time();
-      $variables['is_future_event'] = $event_timestamp > $now;
-
-      // If the event hasn't happened yet, set cache to expire at event time
-      if ($event_timestamp > $now) {
-        $time_until_event = $event_timestamp - $now;
-        \Drupal\Core\Cache\Cache::mergeTags($variables['#cache']['tags'] ?? []);
-        $variables['#cache']['max-age'] = $time_until_event;
-      } else {
-        $variables['#cache']['max-age'] = 0; // Past events don't need caching logic
-      }
-    }
-  }
-
-
+  $variables['current_time'] = date('Y-m-d\TH:i:s');
+  \Drupal::service('page_cache_kill_switch')->trigger();
+  $variables['#cache']['max-age'] = 0;
+  
   $node = $variables['node'];
   if ($node->hasField('field_date_english') && !$node->get('field_date_english')->isEmpty()) {
     $date_value = $node->get('field_date_english')->value;
