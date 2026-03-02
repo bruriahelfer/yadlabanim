@@ -24,10 +24,7 @@
             {% endif %}
           {% endif %}
             {% set event_timestamp = content.field_event_date['#items'].value|date('U') %}
-            {% set current_timestamp = current_time  %}
-            {{ current_time }}
-            {% set is_future = event_timestamp > current_timestamp %}
-            future? {{ is_future_event }}
+            {% set is_future = event_timestamp > current_time %}
             {% if is_future %}
               <div class="lightbox-wrapper register-wrapper">
                 <div class="btn-register lightbox-open" type="button">{{ 'Register to event'|t }}</div>

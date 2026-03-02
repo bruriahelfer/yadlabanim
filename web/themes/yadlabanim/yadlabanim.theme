@@ -93,7 +93,7 @@ function yadlabanim_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $for
 
 function yadlabanim_preprocess_node(&$variables) {
   if ($variables['node']->getType() === 'event') {
-    $variables['current_time'] = date('Y-m-d\TH:i:s');
+    $variables['current_time'] = date('U');
     \Drupal::service('page_cache_kill_switch')->trigger();
     $variables['#cache']['max-age'] = 0;
   }
