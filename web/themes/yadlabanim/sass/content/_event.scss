@@ -1,12 +1,100 @@
 .page-node-event{
-    [id^=block]{
-        > h2{
-            font-family: $karantina;
-            font-size: 1.8em;
-            font-weight: 400;
-            @include width-right();
+    .field--name-field-event-images{
+        margin-top: 90px;
+    }
+    .region-content_bottom [id^=block]{
+        padding-bottom: 90px;
+        .titles{
             margin-bottom: 50px;
-
+        }
+    }
+    .left-right-width{
+        .right{
+            .top-area{
+                padding-bottom: 60px;
+                padding-left: 70px;
+                position: relative;
+                h1{
+                    margin-bottom: 0;
+                }
+                h2{
+                    padding: 0;
+                    font-family: $karantina;
+                    font-weight: 400;
+                    font-size: 1.8em;
+                }
+                .field--name-field-event-who{
+                    border-radius: 12px;
+                    background: $lightgold;
+                    font-weight: 500;
+                    display: inline-block;
+                    padding: 4px 15px;
+                    margin-bottom: 25px;
+                    margin-top: 25px;
+                }
+                .date, .time, .navigate a, .place{
+                    padding-right: 35px;
+                    padding-bottom: 18px;
+                }
+                .date{
+                    background: url(/themes/yadlabanim/images/date.svg) no-repeat right top 1px;
+                }
+                .time{
+                    background: url(/themes/yadlabanim/images/time.svg) no-repeat right top 2px;
+                }
+                .navigate a{
+                    background: url(/themes/yadlabanim/images/navigate.svg) no-repeat right top 2px;
+                }
+                .place{
+                    background: url(/themes/yadlabanim/images/navigate.svg) no-repeat right top 2px;
+                }
+                .register-wrapper{
+                    position: absolute;
+                    left: 70px;
+                    bottom: -24px;
+                    display: flex;
+                    align-items: center;
+                    .btn-register{
+                        border-radius: 10px;
+                        border: 2px solid $bglightgold;
+                        background: #B9A981;
+                        display: flex;
+                        align-items: center;
+                        font-weight: 500;
+                        color: #fff;
+                        padding: 0 16px;
+                        height: 48px;
+                        box-sizing: border-box;
+                        cursor: pointer;
+                        transition: background 0.5s;
+                        &:hover{
+                            background: $darkgold;
+                        }
+                        &.unactive{
+                            background: rgba(185, 169, 129, 0.45);
+                            color: rgba(97, 97, 105, 0.56);
+                            font-weight: 300;
+                            cursor: default;
+                            pointer-events: none;
+                        }
+                    }
+                }
+            }
+            .content{
+                padding-top: 40px;
+                padding-left: 70px;
+            }
+        }
+        &.no-image{
+            .left{
+                width: 0%;
+            }
+            .right{
+                width: 100%;
+                .register-wrapper{
+                    padding-left: 40%;
+                }
+            }
         }
     }
 }

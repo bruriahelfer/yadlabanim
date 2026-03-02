@@ -1,5 +1,5 @@
-{% if content.field_main_image|render %}    
-  <div class="left-right-width">
+  
+  <div class="left-right-width{% if not content.field_main_image|render %}  no-image{% endif %}">
     <div class="left">
       {{ content.field_main_image }}
     </div>
@@ -12,11 +12,37 @@
           <h1 class="page-title">{{ label }}</h1>
           <h2 class="subtitle">{{ content.field_sub_title }}</h2>
           {{ content.field_event_who }}
-          <div class="date">{{ content.field_event_date['#items'].value|date('U')|format_date('simple') }}</div>
-          <div class="time">{{ content.field_event_date }}</div>
-          {% if node.field_place.0.entity.field_address.value is not empty %}
-            <div class="navigate"><a href="https://www.google.com/maps/place/{{ node.field_place.0.entity.field_address.value }}">{{ node.field_place.0.entity.label }}</a></div>
+          {% if content.field_event_date|render %}
+            <div class="date">{{ content.field_event_date['#items'].value|date('U')|format_date('simple') }}</div>
+            <div class="time">{{ content.field_event_date }}</div>
           {% endif %}
+          {% if content.field_place|render %}
+            {% if node.field_place.0.entity.field_address.value is not empty %}
+              <div class="navigate"><a href="https://www.google.com/maps/place/{{ node.field_place.0.entity.field_address.value }}">{{ node.field_place.0.entity.label }}</a></div>
+            {% else %}
+              <div class="place">{{ content.field_place }}</div>
+            {% endif %}
+          {% endif %}
+            {% set event_timestamp = content.field_event_date['#items'].value|date('U') %}
+            {% set current_timestamp = "now"|date('U') %}
+            {% set is_future = event_timestamp > current_timestamp %}
+            {% if is_future %}
+              <div class="lightbox-wrapper register-wrapper">
+                <div class="btn-register lightbox-open" type="button">{{ 'Register to event'|t }}</div>
+                <div class="lightbox simple">
+                  <div class="wrapper">
+                    <div class="close"><img src="/themes/yadlabanim/images/close-popup.png"></div>
+                    <div class="inside">
+                      הרשמה לאירוע!
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              <div class="register-wrapper">
+                <div class="btn-register unactive">{{ 'Register to event'|t }}</div>
+              </div>
+            {% endif %}
         </div>
       </div>
       <div class="content">
@@ -25,13 +51,7 @@
         </div>
     </div>
   </div>
-{% else %}
-  <div class="events-full-width width-wrapper">
-    <div class="breadcrumbs-wrapper">
-      {% include '/themes/yadlabanim/templates/content/breadcrumbs.html.twig'  %}
-    </div>
-    <div class="titles">
-      <h1 class="page-title">{{ label }}</h1>
-      <h2 class="subtitle">{{ content.field_sub_title }}</h2>
-    </div>
-{% endif %}
+</div>
+<div class="events-images width-wrapper-right">
+  {{ content.field_event_images}}
+</div>

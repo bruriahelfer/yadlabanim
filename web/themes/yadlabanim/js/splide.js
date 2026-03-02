@@ -64,6 +64,39 @@
         splide.mount();
       });
 
+            // More events
+      once('splide-init-events-4', '.view-content-events-4', context).forEach(function(element) {
+        var splide = new Splide(element, {
+          direction: 'rtl',
+          perPage  : 3,
+          pagination: false,
+          gap: '90px',
+          padding: { 
+            left: '400px',  
+            right: 0
+          },
+          classes: {
+            list: '.view-content-events-4 ', 
+            slide: 'views-row',  
+          },
+          breakpoints: {
+            1200: {
+              perPage: 3,
+            },
+            1024: {
+              perPage: 3,             
+            },
+            480: {
+              perPage: 1,            
+            },
+            320: {              
+            }
+          },
+        });
+        
+        splide.mount();
+      });
+
       // Gallery slider
     once('splide-init-gallery', '.view-content-gallery', context).forEach(function(element) {
       var splide = new Splide(element, {

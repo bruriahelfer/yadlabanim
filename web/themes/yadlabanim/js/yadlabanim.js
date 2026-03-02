@@ -81,6 +81,25 @@
         setTimeout(checkPagerVisibility, 500);
       });
 
+                // lightbox
+
+          // Show the lightbox
+          $(".lightbox-open").unbind('click').bind('click', function (e) { 
+            $(this).closest('.lightbox-wrapper').find('.lightbox').addClass('show');
+            $("body").addClass('lightbox-show');
+          });
+
+          // Close lightbox on click of the close button
+          $(".lightbox .close img").unbind('click').bind('click', function (e) { 
+            $(this).closest('.lightbox').removeClass('show');
+            $("body").removeClass('lightbox-show');
+          });
+          $(".lightbox").unbind('click').bind('click', function (e) { 
+            if (!$(e.target).closest('.wrapper').length) {
+              $(this).removeClass('show');
+              $("body").removeClass('lightbox-show');
+            }
+          });
 
         // filters - search page
 
@@ -282,26 +301,6 @@
           $textareaMemo.on('input', function() {
             var value = $(this).val().trim();
             updateCounterMemo();
-          });
-
-          // lightbox
-
-          // Show the lightbox
-          $(".lightbox-open").unbind('click').bind('click', function (e) { 
-            $(this).closest('.lightbox-wrapper').find('.lightbox').addClass('show');
-            $("body").addClass('lightbox-show');
-          });
-
-          // Close lightbox on click of the close button
-          $(".lightbox .close img").unbind('click').bind('click', function (e) { 
-            $(this).closest('.lightbox').removeClass('show');
-            $("body").removeClass('lightbox-show');
-          });
-          $(".lightbox").unbind('click').bind('click', function (e) { 
-            if (!$(e.target).closest('.wrapper').length) {
-              $(this).removeClass('show');
-              $("body").removeClass('lightbox-show');
-            }
           });
 
           // tabs - fallen page
