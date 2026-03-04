@@ -21,6 +21,7 @@
         "drupal/backup_migrate": "^5.1",
         "drupal/better_exposed_filters": "7.1.1",
         "drupal/color_field": "3.0.2",
+        "drupal/colorbox": "2.2",
         "drupal/comment_admin_pages": "^1.0",
         "drupal/core-composer-scaffold": "^10.0",
         "drupal/core-project-message": "^10.0",

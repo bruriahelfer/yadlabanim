@@ -65,3 +65,9 @@
 .region-content_bottom{
     margin-top: 80px;
 }
+
+article{
+    .field--name-body{
+        @include width;
+    }
+}

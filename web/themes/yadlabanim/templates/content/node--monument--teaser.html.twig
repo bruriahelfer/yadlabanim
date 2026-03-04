@@ -1,0 +1,16 @@
+<div class="list-theme">
+  <div class="right">
+    {{ content.field_main_image }}
+  </div>
+  <div class="left">
+    <h2 class="title">{{ label }}</h2>
+    {{ content.field_teaser }}
+    {% if content.field_address|render %}
+      {% if content.field_google_place|render %}
+        <div class="navigate"><a href="{{ node.field_google_place.value }}">{{ content.field_address }}</a></div>
+      {% else %}
+        <div class="place">{{ content.field_address }}</div>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

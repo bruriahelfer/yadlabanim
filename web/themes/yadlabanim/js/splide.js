@@ -97,6 +97,32 @@
         splide.mount();
       });
 
+    // Event images slider
+      once('splide-init-event-images', '.view-content-event-images', context).forEach(function(element) {
+        var splide = new Splide(element, {
+          direction: 'rtl',
+          perPage  : 5,
+          pagination: false,
+          gap: '20px',
+          breakpoints: {
+            1200: {
+              perPage: 3,
+            },
+            1024: {
+              perPage: 3,             
+            },
+            480: {
+              perPage: 1,            
+            },
+            320: {              
+            }
+          },
+        });
+        
+        splide.mount();
+
+      });
+
       // Gallery slider
     once('splide-init-gallery', '.view-content-gallery', context).forEach(function(element) {
       var splide = new Splide(element, {

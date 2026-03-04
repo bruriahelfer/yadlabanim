@@ -7,6 +7,9 @@
             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ path('entity.node.canonical', {'node': 43}) }}"><span itemprop="item"><span itemprop="name">{{ "Casualties of hostilities"|t }}</span><meta itemprop="position" content="2"></a></span><span class="arrow">›</span></li>
         {% endif %}
         <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ url('<current>') }}"><span itemprop="name">{{ node.field_rank.value }} {{ node.field_first_name.value }} {{ label }} {{ 'Z"L'|t }}</span><meta itemprop="position" content="3" /></a></li>
+    {% elseif node.bundle|clean_class == "event" %}
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ path('entity.node.canonical', {'node': 52}) }}"><span itemprop="name">{{ "Events"|t }}</span><meta itemprop="position" content="2"></a><span class="arrow">›</span></li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a itemprop="item" href="{{ url('<current>') }}"><span itemprop="name">{{ label }}</span><meta itemprop="position" content="3" /></a></li>
     {% else %}
         {% if breadcrumb_main_parent is defined %}
             <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">

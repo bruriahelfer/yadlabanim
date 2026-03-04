@@ -45,6 +45,7 @@
     view_mode ? 'paragraph--view-mode--' ~ view_mode|clean_class,
     not paragraph.isPublished() ? 'paragraph--unpublished',
     content.field_background_color|render ? 'has-bg-color' : 'no-bg-color',
+    'paragraph-id-' ~ paragraph.id(),
   ]
 %}
 {% block paragraph %}

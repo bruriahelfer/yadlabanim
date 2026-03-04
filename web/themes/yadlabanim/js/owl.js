@@ -1,4 +1,4 @@
-(function ($, Drupal) {
+/*(function ($, Drupal) {
 
   'use strict';
 
@@ -13,6 +13,7 @@
             autoWidth:true,
             loop: false, 
             margin: 20,
+            navRewind: false,
             navText: ['', ''],  
           });
         }
@@ -21,4 +22,4 @@
       });
     }
   }
-})(jQuery, Drupal);
+})(jQuery, Drupal);*/

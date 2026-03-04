@@ -97,4 +97,28 @@
             }
         }
     }
+    .events-images {
+        .field--name-field-event-images{
+            .image-title{
+                display: block;
+                font-size: 0.7em;
+                font-weight: 400;
+                margin-top: 5px;
+            }
+            &.owl-carousel{
+                &:after{
+                    content: "";
+                    position: absolute;
+                    width: 100px;
+                    height: 100%;
+                    background: linear-gradient(to right, #fff, transparent);
+                    left: 0;
+                    top: 0px;
+                }
+                .owl-controls .owl-nav .owl-prev.disabled{
+                    opacity: 0;
+                }
+            }
+        }
+    }
 }
