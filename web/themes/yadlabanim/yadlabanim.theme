@@ -103,6 +103,10 @@ function yadlabanim_preprocess_node(&$variables) {
     $date_value = $node->get('field_date_english')->value;
     $variables['hebrew_date'] = _convert_to_hebrew_date($date_value);
   }
+  if ($node->hasField('field_exhibition_date') && !$node->get('field_exhibition_date')->isEmpty()) {
+    $date_value = $node->get('field_exhibition_date')->value;
+    $variables['hebrew_date_exhibition'] = _convert_to_hebrew_date($date_value);
+  }
   $theme = \Drupal::theme()->getActiveTheme()->getName();
   
   $blocks = \Drupal::entityTypeManager()

@@ -157,7 +157,7 @@
                     li{
                         a{
                             border-radius: 10px;
-                            border: 1px solid #473F52;
+                            border: 1px solid #B9A981;
                             background: #fff;
                             box-shadow: 0 11px 13px 2px #E1DCC7;
                             padding: 2px 20px;
@@ -179,6 +179,7 @@
                             }
                             &.active{
                                 background: #E1DCC7;
+                                border: 1px solid #473F52;
                             }
                         }
                     }
@@ -996,10 +997,51 @@
     &.view{
         .view-content{
             .views-row{
-                width: calc(20% - 36px);
+                width: calc(20% - 16px);
                 margin-left: 45px;
+                @include res(big){
+                    width: calc(20% - 16px);
+                    margin-left: 20px;
+                }
                 &:nth-child(5n){
                     margin-left: 0px;
+                    @include res(xl-xxl){
+                        margin-left: 30px;
+                    }
+                    @include res(l){
+                        margin-left: 20px;
+                    }
+                    @include res(m){
+                        margin-left: 20px;
+                    }
+                }
+                @include res(xl-xxl){
+                    width: calc(33.33% - 30px);
+                    margin-left: 30px;
+                    &:nth-child(3n){
+                        margin-left: 0px;
+                    }
+                }
+                @include res(l){
+                    width: calc(33.33% - 14px);
+                    margin-left: 20px;
+                    margin-bottom: 30px;
+                    &:nth-child(3n){
+                        margin-left: 0px;
+                    }
+                }
+                @include res(m){
+                    width: calc(50% - 10px);
+                    margin-left: 20px;
+                    margin-bottom: 30px;
+                    &:nth-child(2n){
+                        margin-left: 0px;
+                    }
+                }
+                @include res(s){
+                    width: 100%;
+                    margin-left: 0px;
+                    margin-bottom: 30px;
                 }
             }
         }

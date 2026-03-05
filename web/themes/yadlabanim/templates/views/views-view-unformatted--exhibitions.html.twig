@@ -1,0 +1,18 @@
+{% set seen_types = [] %}
+
+{% for row in rows %}
+  {% set type = row.content['#row']._entity.field_sog.value %}
+  
+  {% if type not in seen_types %}
+    {% set seen_types = seen_types|merge([type]) %}
+    
+    {%
+      set row_classes = [
+        default_row_class ? 'views-row',
+      ]
+    %}
+    <div{{ row.attributes.addClass(row_classes) }}>
+      {{- row.content -}}
+    </div>
+  {% endif %}
+{% endfor %}

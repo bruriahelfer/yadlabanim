@@ -99,7 +99,7 @@ body.front{
     }
     .field--name-field-paragraphs{
         position: relative;
-        .paragraph {
+        > .paragraph {
             position: sticky;
             top: 0;
             background-color: #fff;
@@ -131,7 +131,7 @@ body.front{
 }
 
 .field--name-field-paragraphs{
-    .paragraph {
+    > .paragraph {
         position: relative;
         padding-bottom: 90px;
         &.has-bg-color{

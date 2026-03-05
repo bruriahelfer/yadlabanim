@@ -1,0 +1,110 @@
+.paragraph--type--teams{
+    .view-team{
+        .view-filters{
+            margin: 20px 0 30px;
+            font-weight: 400;
+            .form-radios{
+                display: flex;
+                flex-wrap: wrap;                              
+                .js-form-item{
+                    position: relative;
+                    label{
+                        border-radius: 8px;
+                        border: 1px solid #473F52;
+                        padding: 10px;
+                        display: block;
+                        font-size: 0.8em;
+                        margin-left: 14px;
+                        cursor: pointer;
+                        border: 1px solid #B9A981;
+                        background: #FFF;
+                        box-shadow: 0 3px 13px 2px #E1DCC7;
+                    }
+                    input{
+                        position: absolute;
+                        opacity: 0;
+                        &:checked + label{
+                            border: 1px solid#473F52;
+                            background: #E1DCC7;
+                        }
+                    }
+                }
+            }
+        }
+        .view-content{
+            display: flex;
+            flex-wrap: wrap;
+            .views-row{
+                width: calc(20% - 24px);
+                margin-left: 30px;
+                margin-bottom: 30px;
+                border-radius: 15px;
+                background: #fefefd;
+                box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.07);
+                font-size: 0.8em;
+                line-height: 2;
+                padding: 26px;
+                box-sizing: border-box;
+                @include res(big){
+                    width: calc(20% - 16px);
+                    margin-left: 20px;
+                }
+                &:nth-child(5n){
+                    margin-left: 0px;
+                    @include res(xl-xxl){
+                        margin-left: 30px;
+                    }
+                    @include res(l){
+                        margin-left: 20px;
+                    }
+                    @include res(m){
+                        margin-left: 20px;
+                    }
+                }
+                @include res(xl-xxl){
+                    width: calc(33.33% - 30px);
+                    margin-left: 30px;
+                    &:nth-child(3n){
+                        margin-left: 0px;
+                    }
+                }
+                @include res(l){
+                    width: calc(33.33% - 14px);
+                    margin-left: 20px;
+                    margin-bottom: 30px;
+                    &:nth-child(3n){
+                        margin-left: 0px;
+                    }
+                }
+                @include res(m){
+                    width: calc(50% - 10px);
+                    margin-left: 20px;
+                    margin-bottom: 30px;
+                    &:nth-child(2n){
+                        margin-left: 0px;
+                    }
+                }
+                @include res(s){
+                    width: 100%;
+                    margin-left: 0px;
+                    margin-bottom: 30px;
+                }
+                .field--name-field-title-h2{
+                    font-family: $karantina;
+                    font-weight: 700;
+                    font-size: 1.9em;
+                    line-height: 1.2;
+                }
+                .field--name-field-role{
+                    font-weight: 400;
+                }
+                .field--name-field-contact{
+                    line-height: 1.6;
+                    .field__label{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    } 
+}

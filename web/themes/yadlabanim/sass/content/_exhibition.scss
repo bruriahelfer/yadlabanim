@@ -1,0 +1,33 @@
+.view-exhibitions.view-display-id-block_1{
+            .view-filters{
+            margin: 20px 0 30px;
+            font-weight: 400;
+            .form-radios{
+                display: flex;
+                flex-wrap: wrap;                              
+                .js-form-item{
+                    position: relative;              
+                    label{
+                        border-radius: 8px;
+                        border: 1px solid #473F52;
+                        padding: 10px;
+                        display: block;
+                        font-size: 0.8em;
+                        margin-left: 14px;
+                        cursor: pointer;
+                        border: 1px solid #B9A981;
+                        background: #FFF;
+                        box-shadow: 0 3px 13px 2px #E1DCC7;
+                    }
+                    input{
+                        position: absolute;
+                        opacity: 0;
+                        &:checked + label{
+                            border: 1px solid#473F52;
+                            background: #E1DCC7;
+                        }
+                    }
+                }
+            }
+        }
+}

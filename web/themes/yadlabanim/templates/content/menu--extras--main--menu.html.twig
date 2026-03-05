@@ -23,6 +23,8 @@
         <li{{item.attributes.addClass(menu_item_classes)}}>
             {% if item.content.field_class['#items'].value == 'fallen-search' %}
               {{ drupal_block('views_exposed_filter_block:search-block_4', {label_display: false}) }}
+            {% elseif item.content.field_class['#items'].value == 'contact' %}
+              {{ drupal_entity('block_content', 1) }}
             {% else %}
               {% set is_nolink = item.url.getRouteName() == '<nolink>' or (item.url.isExternal() and item.url.toString() == '') %}
               {% if is_nolink %}

@@ -39,6 +39,7 @@
         "drupal/media_library_edit": "3.0.5",
         "drupal/menu_item_extras": "3.1",
         "drupal/metatag": "^2.1",
+        "drupal/optional_end_date": "1.4",
         "drupal/paragraphs": "^1.17",
         "drupal/paragraphs_edit": "^3.0",
         "drupal/pathauto": "^1.14",

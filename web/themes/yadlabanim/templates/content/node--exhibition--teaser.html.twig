@@ -1,0 +1,25 @@
+<div class="exhibition-teaser-node">
+  <a href="{{ url }}" class="teaser-link">
+    <div class="right">
+      {% if content.field_thumbnail|render %}
+        {{content.field_thumbnail}}
+      {% elseif content.field_main_image|render %}
+        {{ content.field_main_image }}
+      {% else %}
+        <div class="default-image"><img src="/themes/yadlabanim/images/default-image-520x325.png" alt="{{ node.label }}"></div>
+      {% endif %}
+    </div>
+    <div class="left">
+      <h2 class="title">{{ label }}</h2>
+      {% if content.field_teaser|render %}
+        {{ content.field_teaser }}
+      {% else %}
+        {{ content.body}}
+      {% endif %}
+      {% if content.field_exhibition_date|render %}
+        {% set start = node.field_exhibition_date.0.value|date('U') %}
+        <div class="date">{{ start|format_date('simple') }} | {{ hebrew_date_exhibition }}</div>
+      {% endif %}
+    </div>
+  </a>
+</div>
