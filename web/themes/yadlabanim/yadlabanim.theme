@@ -173,5 +173,13 @@ function yadlabanim_preprocess_views_view(&$variables) {
   $variables['hebrew_month'] = $hebrew_month;
 }
 
+function yadlabanim_ajax_render_alter(array &$data) {
+  foreach ($data as $key => $command) {
+    if ($command['command'] === 'viewsScrollTop') {
+      unset($data[$key]);
+      break;
+    }
+  }
+}
 
 ?>

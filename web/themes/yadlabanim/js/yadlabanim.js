@@ -7,6 +7,8 @@
       $(document).ready(function() {
 
 
+      
+
         // list - gallery
         // Load saved preference on page load
         var savedView = localStorage.getItem('galleryView');
